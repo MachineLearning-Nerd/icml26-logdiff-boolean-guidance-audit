@@ -1,0 +1,20 @@
+{
+  "claim_1": {
+    "status": "verified",
+    "compiled_formulas_checked": 6350,
+    "max_probability_error": 2.220446049250313e-16,
+    "max_score_error": 3.3306690738754696e-16,
+    "max_finite_difference_error": 5.201041819447028e-10
+  },
+  "claim_2": {
+    "status": "verified",
+    "primitive_rule_checks": 100,
+    "max_probability_error": 2.220446049250313e-16,
+    "max_score_error": 3.3306690738754696e-16
+  },
+  "negative_controls": {
+    "passed": 3,
+    "total": 3,
+    "minimum_detected_error": 0.05901160358505326
+  }
+}

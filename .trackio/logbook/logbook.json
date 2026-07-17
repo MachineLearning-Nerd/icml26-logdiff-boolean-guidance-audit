@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "title": "Repro - LOGDIFF Exact Boolean Guidance",
+  "emoji": "🎯",
+  "space_id": "DineshAI/OAM1jJsMGp",
+  "paper": {
+    "arxiv_id": "2602.05549",
+    "openreview_id": "OAM1jJsMGp"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-OAM1jJsMGp"
+  ],
+  "updated_at": "2026-07-17T03:43:20+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Repro - LOGDIFF Exact Boolean Guidance",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "claim-1-exact-logical-guidance",
+        "title": "Claim 1 — exact logical guidance",
+        "file": "pages/claim-1-exact-logical-guidance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-sufficient-conditions",
+        "title": "Claim 2 — sufficient conditions",
+        "file": "pages/claim-2-sufficient-conditions/page.md",
+        "children": []
+      },
+      {
+        "slug": "methods-environment",
+        "title": "Methods & environment",
+        "file": "pages/methods-environment/page.md",
+        "children": []
+      },
+      {
+        "slug": "negative-controls-falsification",
+        "title": "Negative controls & falsification",
+        "file": "pages/negative-controls-falsification/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 1620,
+  "revision": "1784259800390388258"
+}

@@ -1,0 +1,18 @@
+{
+  "space_id": "DineshAI/OAM1jJsMGp",
+  "emoji": "🎯",
+  "created_at": "2026-07-17T03:42:33+00:00",
+  "paper": {
+    "arxiv_id": "2602.05549",
+    "openreview_id": "OAM1jJsMGp"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-OAM1jJsMGp"
+  ],
+  "autosync": true,
+  "private": false,
+  "title": "Repro - LOGDIFF Exact Boolean Guidance",
+  "last_page": "conclusion",
+  "local_dashboards": {}
+}
