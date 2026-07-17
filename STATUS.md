@@ -2,6 +2,9 @@
 
 **Session:** autoloop. **Last updated:** 2026-07-17. **State:** locally complete; publication queued.
 
+GitHub: `MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance`
+at commit `0a9ea2a` (public and verified).
+
 ## Source audit
 
 - Paper: arXiv 2602.05549; OpenReview `OAM1jJsMGp`.
@@ -23,5 +26,5 @@
 
 ## Next
 
-- Create and verify the descriptive public GitHub repository. Publish the completed
-  Trackio logbook to `DineshAI/OAM1jJsMGp` after the daily Space quota resets.
+- Publish the completed Trackio logbook to `DineshAI/OAM1jJsMGp` after the daily
+  Space quota resets; verify public tags and artifact bucket, then request verdict.
