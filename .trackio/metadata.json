@@ -13,6 +13,11 @@
   "autosync": true,
   "private": false,
   "title": "Repro - LOGDIFF Exact Boolean Guidance",
-  "last_page": "conclusion",
-  "local_dashboards": {}
+  "last_page": "claim-4-recovered-molecular-pipeline",
+  "local_dashboards": {
+    "reproduction-logdiff": null
+  },
+  "local_artifacts": [
+    "reproduction-logdiff/repro-bundle:v0"
+  ]
 }

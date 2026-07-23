@@ -7,3 +7,5 @@ paper.pdf
 paper.txt
 .trackio/logbook/.serve.log
 
+outputs/
+.DS_Store

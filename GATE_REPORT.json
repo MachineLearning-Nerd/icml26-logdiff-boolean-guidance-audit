@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "skill": "posterly",
+  "timestamp": "2026-07-19T19:01:38Z",
+  "poster_html": "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html",
+  "canvas": {
+    "source": "page-rule",
+    "width_cm": 42.0,
+    "height_cm": 59.4,
+    "orientation": "portrait",
+    "source_url": null
+  },
+  "overall": "PASS",
+  "hard_failures": 0,
+  "warnings": 0,
+  "soft_advisories": 9,
+  "gates": [
+    {
+      "name": "preflight",
+      "severity": "hard",
+      "status": "PASS",
+      "command": [
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/../../tmp/posterly/.venv/bin/python",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/tmp/posterly/tools/poster_check.py",
+        "preflight",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html"
+      ],
+      "summary": {
+        "exit_code": 0,
+        "tail": "[preflight] /Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html\n  problems: 0   warnings: 0\n[preflight] PASS"
+      },
+      "artifacts": []
+    },
+    {
+      "name": "style",
+      "severity": "hard",
+      "status": "PASS",
+      "command": [
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/../../tmp/posterly/.venv/bin/python",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/tmp/posterly/tools/style_check.py",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html",
+        "--disable",
+        "4,5",
+        "--json",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/style_check.json"
+      ],
+      "summary": {
+        "gate": "style",
+        "status": "PASS",
+        "rules": [
+          {
+            "id": 1,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 2,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 3,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 4,
+            "severity": "hard",
+            "status": "SKIPPED",
+            "detail": "disabled via --disable (rule 4)"
+          },
+          {
+            "id": 5,
+            "severity": "hard",
+            "status": "SKIPPED",
+            "detail": "disabled via --disable (rule 5)"
+          },
+          {
+            "id": 6,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 7,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 8,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 9,
+            "severity": "warn",
+            "status": "PASS",
+            "detail": "9 --fs-* token(s) defined"
+          },
+          {
+            "id": 10,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 11,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 12,
+            "severity": "warn",
+            "status": "PASS",
+            "detail": "dark area = 0.0% of poster (<= 8%)"
+          },
+          {
+            "id": 13,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          },
+          {
+            "id": 14,
+            "severity": "hard",
+            "status": "PASS",
+            "detail": "ok"
+          }
+        ]
+      },
+      "artifacts": [
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/style_check.json"
+      ]
+    },
+    {
+      "name": "asset",
+      "severity": "hard",
+      "status": "NOT_RUN",
+      "command": [],
+      "summary": {
+        "not_run": "no --manifest: real-figure provenance gate opted out (NOT verified)"
+      },
+      "artifacts": []
+    },
+    {
+      "name": "measure",
+      "severity": "hard",
+      "status": "PASS",
+      "command": [
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/../../tmp/posterly/.venv/bin/python",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/tmp/posterly/tools/poster_check.py",
+        "measure",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html"
+      ],
+      "summary": {
+        "exit_code": 0,
+        "tail": "[measure] viewport = 1587 x 2245 px\n[measure] columns found: 2\n  col0    last-card-bottom =  2048.53 px\n  col1    last-card-bottom =  2048.53 px\n  spread = 0.00 px   (target < 5.0 px)\n  intercard gap in [15.11 (col0), 15.11 (col0)] px   (target [12.0, 50.0])\n  gap -> footer-strip in [30.23, 30.23] px   (target [30.0, 50.0])\n[measure] PASS"
+      },
+      "artifacts": []
+    },
+    {
+      "name": "polish",
+      "severity": "soft",
+      "status": "PASS",
+      "command": [
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/../../tmp/posterly/.venv/bin/python",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/tmp/posterly/tools/poster_check.py",
+        "polish",
+        "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/papers/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/poster.html"
+      ],
+      "summary": {
+        "exit_code": 0,
+        "tail": "  WARN: WIDOW: <p class='body-text'> wraps to a stranded last line that fills only 31% of the typeset width ('epoch=49-step=2950 checkpoint.'), a runt (SKILL.md Gate B). Fix by REWORDING first: expand or trim a few words so the break lands on a phrase boundary and the last line carries more of the measure (if alignment is already tuned, swap a word for a longer synonym to keep the line count). On a CENTERED heading/title use text-wrap: balance instead. &nbsp;-glue is a LAST RESORT for a leading marker or a tight stat cell only -- glue at most two tokens; never chain more (a fused multi-word unit wraps early and tears a hole in the line above -- the GLUE-CHAIN gate flags it). Context: '... and produced the expected epoch=49-step=2950 checkpoint.'.\n  WARN: CARD/TRAILING: card 0 fills only 55% of its height -- 224 px (45%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n  WARN: CARD/TRAILING: card 1 fills only 62% of its height -- 190 px (38%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n  WARN: CARD/TRAILING: card 2 fills only 57% of its height -- 218 px (43%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n  WARN: CARD/TRAILING: card 3 fills only 61% of its height -- 193 px (39%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n  WARN: CARD/TRAILING: card 4 fills only 49% of its height -- 254 px (51%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n  WARN: CARD/TRAILING: card 5 fills only 69% of its height -- 157 px (31%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.\n[polish] OK (warnings only)"
+      },
+      "artifacts": [],
+      "advisories": 9,
+      "advisory_lines": [
+        "WARN: WIDOW: <p class='range-note'> wraps to a stranded last line that fills only 12% of the typeset width ('63-77%.'), a runt (SKILL.md Gate B). Fix by REWORDING first: expand or trim a few words so the break lands on a phrase boundary and the last line carries more of the measure (if alignment is already tuned, swap a word for a longer synonym to keep the line count). On a CENTERED heading/title use text-wrap: balance instead. &nbsp;-glue is a LAST RESORT for a leading marker or a tight stat cell only -- glue at most two tokens; never chain more (a fused multi-word unit wraps early and tears a hole in the line above -- the GLUE-CHAIN gate flags it). Context: '...s fall in 94-98%; only 5/8 constant cells fall in 63-77%.'.",
+        "WARN: WIDOW: <h2 class='section-title'> wraps to a stranded last line that fills only 27% of the typeset width ('not execute'), a runt (SKILL.md Gate B). Fix by REWORDING first: expand or trim a few words so the break lands on a phrase boundary and the last line carries more of the measure (if alignment is already tuned, swap a word for a longer synonym to keep the line count). On a CENTERED heading/title use text-wrap: balance instead. &nbsp;-glue is a LAST RESORT for a leading marker or a tight stat cell only -- glue at most two tokens; never chain more (a fused multi-word unit wraps early and tears a hole in the line above -- the GLUE-CHAIN gate flags it). Context: 'CelebA numbers transcribe; protocol does not execute'.",
+        "WARN: WIDOW: <p class='body-text'> wraps to a stranded last line that fills only 31% of the typeset width ('epoch=49-step=2950 checkpoint.'), a runt (SKILL.md Gate B). Fix by REWORDING first: expand or trim a few words so the break lands on a phrase boundary and the last line carries more of the measure (if alignment is already tuned, swap a word for a longer synonym to keep the line count). On a CENTERED heading/title use text-wrap: balance instead. &nbsp;-glue is a LAST RESORT for a leading marker or a tight stat cell only -- glue at most two tokens; never chain more (a fused multi-word unit wraps early and tears a hole in the line above -- the GLUE-CHAIN gate flags it). Context: '... and produced the expected epoch=49-step=2950 checkpoint.'.",
+        "WARN: CARD/TRAILING: card 0 fills only 55% of its height -- 224 px (45%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.",
+        "WARN: CARD/TRAILING: card 1 fills only 62% of its height -- 190 px (38%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.",
+        "WARN: CARD/TRAILING: card 2 fills only 57% of its height -- 218 px (43%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.",
+        "WARN: CARD/TRAILING: card 3 fills only 61% of its height -- 193 px (39%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.",
+        "WARN: CARD/TRAILING: card 4 fills only 49% of its height -- 254 px (51%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md.",
+        "WARN: CARD/TRAILING: card 5 fills only 69% of its height -- 157 px (31%) blank below the last line. A card stretched to align (flex:1) but padded with whitespace clears the bottom-edge gate yet reads as unfinished. Fill with real content, grow a figure, or shrink the canvas. See Gate C in SKILL.md."
+      ]
+    }
+  ]
+}

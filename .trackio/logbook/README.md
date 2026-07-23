@@ -1,5 +1,5 @@
 ---
-title: "Repro - LOGDIFF Exact Boolean Guidance"
+title: "Reproduction: Logical Guidance for the Exact Composition of Diffusion Models"
 emoji: 🎯
 colorFrom: yellow
 colorTo: red
@@ -13,6 +13,6 @@ tags:
  - paper-OAM1jJsMGp
 ---
 
-# Repro - LOGDIFF Exact Boolean Guidance
+# Reproduction: Logical Guidance for the Exact Composition of Diffusion Models
 
 An open experiment logbook, published with [Trackio](https://github.com/gradio-app/trackio).

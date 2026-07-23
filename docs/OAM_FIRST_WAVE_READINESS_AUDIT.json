@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-07-20T13:03:34Z",
+  "paper": "OAM1jJsMGp",
+  "route_id": "oam-replicates-cpu-v1",
+  "contract_sha256": "cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+  "source_bindings": {
+    "input_archive_sha256": "a0bbb9678f72cb2239fb1dec62fc8decb8ee0706a97e19e0ec6a59983c7c3958",
+    "sources_manifest_sha256": "525fa2347e421ba669ce5068664939b0fabb9efd57e5451f7a7faed1ba3df55b",
+    "runner_sha256": "ce6b6a67f6e9f39bed4287b64c6c209b8398ba494ed3871fb8fedcabef783249",
+    "bootstrap_sha256": "db7c74ce867c6634362e98e95d6c9ff1e270c266f130805073481977d34b9eb4",
+    "requirements_sha256": "adfbefd63f4da5981b62b9c1702ae93470b13a9e69e67e5a73cec1913346bd2f",
+    "local_source_manifest_check": "passed"
+  },
+  "preflight": {
+    "job_id": "DineshAI/6a5e0c1fbee6ee1cf4ed24ba",
+    "job_status": "COMPLETED",
+    "prefix": "hf-jobs/oam-replicates-cpu-v1/preflight/contract-cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+    "report_sha256": "d80c3bad45c13c13e688de572fc24e0299b2bd3df692963f5c265f76f6d56f64",
+    "success_sha256": "c67d7f9f302dbede0369d994b62f4ed7179b180a6e02b149fc03c4b1b687c871",
+    "success_report_binding_valid": true,
+    "status": "passed",
+    "scientific_evidence": false,
+    "environment_fingerprint_sha256": "eeaeb6c2a480fca9bb4488f1972ac4143a98841f296e9294116ce8fa2d1b9970",
+    "probe_wall_seconds": 147.81384897232056,
+    "projected_slice_hours": 2.7715096682310105,
+    "projected_slice_cost_usd": 0.08314529004693032,
+    "slice_internal_wall_gate_hours": 5.25,
+    "slice_cost_gate_usd": 0.18,
+    "projection_within_gates": true,
+    "projected_all_14_campaign_job_hours": 155.20454142093658,
+    "projected_all_14_generation_cost_usd": 4.656136242628097
+  },
+  "first_wave": [
+    {
+      "job_id": "DineshAI/6a5e0d94bee6ee1cf4ed24cd",
+      "status": "RUNNING",
+      "running_seconds_at_inspect": 3753,
+      "logic": "logdiff_and",
+      "run_seed": 1,
+      "slice_id": "s00",
+      "sample_range": [0, 8],
+      "prefix": "hf-jobs/oam-replicates-cpu-v1/campaigns/logdiff_and/run-seed-01/slice-s00-samples-000-008/contract-cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+      "bucket_files": ["ATTEMPTS.json"],
+      "attempts_sha256": "91b43f8e80be3dedd1b8ede8fbfbf38b79c6e890c283fc3658657e5d20f043f7",
+      "attempts": {"0": 1, "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "7": 1}
+    },
+    {
+      "job_id": "DineshAI/6a5e0dadd216bd6f3a2035af",
+      "status": "RUNNING",
+      "running_seconds_at_inspect": 3727,
+      "logic": "logdiff_and_not",
+      "run_seed": 1,
+      "slice_id": "s00",
+      "sample_range": [0, 8],
+      "prefix": "hf-jobs/oam-replicates-cpu-v1/campaigns/logdiff_and_not/run-seed-01/slice-s00-samples-000-008/contract-cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+      "bucket_files": ["ATTEMPTS.json"],
+      "attempts_sha256": "91b43f8e80be3dedd1b8ede8fbfbf38b79c6e890c283fc3658657e5d20f043f7",
+      "attempts": {"0": 1, "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "7": 1}
+    },
+    {
+      "job_id": "DineshAI/6a5e0dc6bee6ee1cf4ed24cf",
+      "status": "RUNNING",
+      "running_seconds_at_inspect": 3703,
+      "logic": "logdiff_and",
+      "run_seed": 2,
+      "slice_id": "s00",
+      "sample_range": [0, 8],
+      "prefix": "hf-jobs/oam-replicates-cpu-v1/campaigns/logdiff_and/run-seed-02/slice-s00-samples-000-008/contract-cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+      "bucket_files": ["ATTEMPTS.json"],
+      "attempts_sha256": "91b43f8e80be3dedd1b8ede8fbfbf38b79c6e890c283fc3658657e5d20f043f7",
+      "attempts": {"0": 1, "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "7": 1}
+    },
+    {
+      "job_id": "DineshAI/6a5e0de1bee6ee1cf4ed24d1",
+      "status": "RUNNING",
+      "running_seconds_at_inspect": 3672,
+      "logic": "logdiff_and_not",
+      "run_seed": 2,
+      "slice_id": "s00",
+      "sample_range": [0, 8],
+      "prefix": "hf-jobs/oam-replicates-cpu-v1/campaigns/logdiff_and_not/run-seed-02/slice-s00-samples-000-008/contract-cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+      "bucket_files": ["ATTEMPTS.json"],
+      "attempts_sha256": "91b43f8e80be3dedd1b8ede8fbfbf38b79c6e890c283fc3658657e5d20f043f7",
+      "attempts": {"0": 1, "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "7": 1}
+    }
+  ],
+  "current_terminal_gate": {
+    "any_first_wave_job_terminal": false,
+    "any_slice_success_present": false,
+    "any_slice_manifest_present": false,
+    "any_slice_report_present": false,
+    "any_sample_payload_present": false,
+    "interpretation": "All eight samples in each slice have begun attempt 1, but no durable scientific sample or terminal slice evidence is present yet. Partial logs and ATTEMPTS.json are operational only."
+  },
+  "next_wave_decision": {
+    "authorized_now": false,
+    "reasons": [
+      "All four allowed OAM concurrency slots are occupied by the current first wave.",
+      "No current slice has reached natural terminal status.",
+      "No first-wave SUCCESS/SLICE_MANIFEST or terminal partial REPORT exists for independent validation.",
+      "The next four exact ledger reservations do not yet exist."
+    ],
+    "conditional_next_disjoint_identities": [
+      "logdiff_and/run-seed-03/s00",
+      "logdiff_and_not/run-seed-03/s00",
+      "logdiff_and/run-seed-04/s00",
+      "logdiff_and_not/run-seed-04/s00"
+    ],
+    "conditional_next_wave_cost_ceiling_usd": 0.72,
+    "ledger_authorized_cap_usd": 40.0,
+    "ledger_billed_or_committed_usd": 5.93,
+    "ledger_uncommitted_balance_usd": 34.07,
+    "budget_capacity_if_fresh_exact_reservations_are_added": true,
+    "required_before_any_next_launch": [
+      "Let every current Job terminate naturally; do not stop, signal, cancel, or mutate it.",
+      "Require COMPLETED plus a valid SUCCESS-last slice, or classify a terminal REPORT as partial/exhausted without calling it success.",
+      "For success, verify the exact identity/binding, eight sample namespaces, FILES/SUCCESS hashes, SLICE_MANIFEST hash, finite 1000-step tensors, and elapsed runtime.",
+      "Confirm measured first-wave runtime remains within the 5.25-hour internal and 6-hour Job ceilings.",
+      "Re-read live account state and preserve the at-most-four OAM concurrency guard.",
+      "Create four exact reserved-not-submitted USD 0.18 ledger rows and recheck the live aggregate cap.",
+      "Obtain the external authorization gates; this audit grants no launch authority."
+    ]
+  },
+  "protected_local_processes": [
+    {
+      "pid": 476,
+      "alive": true,
+      "state": "SNs",
+      "elapsed": "15:51:58",
+      "command": "python repro/src/run_parallel_molecular_protocol.py --logic logdiff_and --run-seed 0 --samples 32 --workers 4 --num-steps 1000 --max-attempts 10"
+    },
+    {
+      "pid": 40427,
+      "alive": true,
+      "state": "Ss+",
+      "elapsed": "09:29:34",
+      "command": ".venv/bin/python repro/src/run_molecular_postprocess_queue.py --wait-pid 476 --wait-command run_parallel_molecular_protocol.py --max-attempts 10 --timeout-hours 24"
+    }
+  ],
+  "actions_performed": {
+    "job_launch_or_mutation": false,
+    "local_process_signal_or_mutation": false,
+    "publication": false,
+    "test_suite": false,
+    "read_only_hf_and_process_inspection": true
+  }
+}

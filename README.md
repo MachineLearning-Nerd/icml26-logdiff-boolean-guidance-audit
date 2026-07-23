@@ -23,12 +23,15 @@ the constant-weight OR baseline; every invalid construction is rejected.
 
 ```bash
 uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python numpy pytest
+uv pip install --python .venv/bin/python numpy
 source .venv/bin/activate
 python repro/src/run_logdiff.py --output-dir outputs --seeds 25
-python -m pytest repro/tests -q
+python repro/src/audit_molecular_campaign_evidence.py --help
 ```
+
+Confidence is established with paper-scale scientific runs, raw artifacts,
+independent analyses, negative controls, provenance, and SHA-256 validation.
+Automated test suites are not a deliverable for this research reproduction.
 
 Official source: `TanjaBien/LogDiff`, pinned commit
 `94ef35bafd4b4239e9832d8295128c09e8fc1472`.
-
