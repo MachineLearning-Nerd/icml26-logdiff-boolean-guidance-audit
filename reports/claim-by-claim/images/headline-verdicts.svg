@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0b1020"/>
+  <text x="70" y="85" fill="#f8fafc" font-family="Arial, sans-serif" font-size="38" font-weight="700">Five exact claims, three resolved</text>
+  <text x="70" y="127" fill="#94a3b8" font-family="Arial, sans-serif" font-size="22">Current evidence supports the existing 6/10 — no score increase is claimed</text>
+  <rect x="70" y="175" width="1060" height="120" rx="24" fill="#151e33"/>
+  <text x="100" y="225" fill="#94a3b8" font-family="Arial, sans-serif" font-size="20">SUPPORTED SCORE</text>
+  <text x="100" y="275" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">6 / 10</text>
+  <rect x="310" y="210" width="740" height="28" rx="14" fill="#273449"/>
+  <rect x="310" y="210" width="444" height="28" rx="14" fill="#22c55e"/>
+  <text x="310" y="270" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="20">VERIFIED / FALSIFIED: 3 claims</text>
+  <text x="760" y="270" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="20">BLOCKED: 2 claims</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="70" y="345" width="196" height="190" rx="20" fill="#123225" stroke="#22c55e" stroke-width="2"/>
+    <text x="95" y="390" fill="#86efac" font-size="18" font-weight="700">CLAIM 1</text>
+    <text x="95" y="430" fill="#f8fafc" font-size="25" font-weight="700">VERIFIED</text>
+    <text x="95" y="468" fill="#cbd5e1" font-size="17">6,350 formulas</text>
+    <text x="95" y="496" fill="#cbd5e1" font-size="17">≤3.33e-16 error</text>
+    <rect x="286" y="345" width="196" height="190" rx="20" fill="#342315" stroke="#f59e0b" stroke-width="2"/>
+    <text x="311" y="390" fill="#fcd34d" font-size="18" font-weight="700">CLAIM 2</text>
+    <text x="311" y="430" fill="#f8fafc" font-size="25" font-weight="700">FALSIFIED</text>
+    <text x="311" y="468" fill="#cbd5e1" font-size="17">Literal ranges</text>
+    <text x="311" y="496" fill="#cbd5e1" font-size="17">contradict Table 2</text>
+    <rect x="502" y="345" width="196" height="190" rx="20" fill="#2e2237" stroke="#a78bfa" stroke-width="2"/>
+    <text x="527" y="390" fill="#c4b5fd" font-size="18" font-weight="700">CLAIM 3</text>
+    <text x="527" y="430" fill="#f8fafc" font-size="25" font-weight="700">BLOCKED</text>
+    <text x="527" y="468" fill="#cbd5e1" font-size="17">3 checkpoints</text>
+    <text x="527" y="496" fill="#cbd5e1" font-size="17">unavailable</text>
+    <rect x="718" y="345" width="196" height="190" rx="20" fill="#2e2237" stroke="#a78bfa" stroke-width="2"/>
+    <text x="743" y="390" fill="#c4b5fd" font-size="18" font-weight="700">CLAIM 4</text>
+    <text x="743" y="430" fill="#f8fafc" font-size="25" font-weight="700">BLOCKED</text>
+    <text x="743" y="468" fill="#cbd5e1" font-size="17">0 complete</text>
+    <text x="743" y="496" fill="#cbd5e1" font-size="17">campaigns</text>
+    <rect x="934" y="345" width="196" height="190" rx="20" fill="#123225" stroke="#22c55e" stroke-width="2"/>
+    <text x="959" y="390" fill="#86efac" font-size="18" font-weight="700">CLAIM 5</text>
+    <text x="959" y="430" fill="#f8fafc" font-size="25" font-weight="700">VERIFIED</text>
+    <text x="959" y="468" fill="#cbd5e1" font-size="17">27,000 events</text>
+    <text x="959" y="496" fill="#cbd5e1" font-size="17">exhausted</text>
+  </g>
+  <text x="70" y="615" fill="#64748b" font-family="Arial, sans-serif" font-size="18">VERIFIED and FALSIFIED receive full credit; missing or proxy evidence remains BLOCKED.</text>
+</svg>

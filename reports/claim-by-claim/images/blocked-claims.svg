@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#faf7ff"/>
+  <text x="70" y="75" fill="#251b34" font-family="Arial, sans-serif" font-size="36" font-weight="700">Blocked means the exact evidence contract is not complete</text>
+  <text x="70" y="116" fill="#6b5b7d" font-family="Arial, sans-serif" font-size="21">Four genuinely different routes were completed for each unresolved claim.</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="70" y="165" width="500" height="410" rx="24" fill="#ffffff" stroke="#a78bfa" stroke-width="2"/>
+    <text x="105" y="215" fill="#7c3aed" font-size="20" font-weight="700">CLAIM 3 · CELEBA</text>
+    <text x="105" y="260" fill="#251b34" font-size="29" font-weight="700">3 required checkpoints missing</text>
+    <g fill="#6b5b7d" font-size="18">
+      <text x="120" y="310">1  Exact release audit</text>
+      <text x="120" y="350">2  Public checkpoint search</text>
+      <text x="120" y="390">3  Public-model reconstruction audit</text>
+      <text x="120" y="430">4  Strict falsification search</text>
+    </g>
+    <rect x="105" y="474" width="430" height="62" rx="12" fill="#f3e8ff"/>
+    <text x="130" y="502" fill="#6b21a8" font-size="17" font-weight="700">Public DDPM resolved, but rejected:</text>
+    <text x="130" y="527" fill="#6b21a8" font-size="17">wrong model state; no classifiers or judge</text>
+    <rect x="630" y="165" width="500" height="410" rx="24" fill="#ffffff" stroke="#a78bfa" stroke-width="2"/>
+    <text x="665" y="215" fill="#7c3aed" font-size="20" font-weight="700">CLAIM 4 · MOLECULES</text>
+    <text x="665" y="260" fill="#251b34" font-size="29" font-weight="700">0 complete experiments</text>
+    <g fill="#6b5b7d" font-size="18">
+      <text x="680" y="310">1  Exact paper/release audit</text>
+      <text x="680" y="350">2  Hash-bound bucket recovery</text>
+      <text x="680" y="390">3  Upstream reconstruction audit</text>
+      <text x="680" y="430">4  Strict falsification search</text>
+    </g>
+    <rect x="665" y="474" width="430" height="62" rx="12" fill="#f3e8ff"/>
+    <text x="690" y="502" fill="#6b21a8" font-size="17" font-weight="700">96 / 448 LoGDiff payloads found;</text>
+    <text x="690" y="527" fill="#6b21a8" font-size="17">no DualDiff and no docking results</text>
+  </g>
+  <text x="70" y="625" fill="#6b5b7d" font-family="Arial, sans-serif" font-size="19">Missing resources, partial runs, and proxy models are not valid falsifications.</text>
+</svg>

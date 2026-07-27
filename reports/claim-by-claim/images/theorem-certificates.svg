@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#071a18"/>
+  <text x="70" y="78" fill="#f0fdfa" font-family="Arial, sans-serif" font-size="36" font-weight="700">Finite-domain certificates hit floating-point precision</text>
+  <text x="70" y="120" fill="#99f6e4" font-family="Arial, sans-serif" font-size="21">Independent full-joint oracles and fail-closed assumption controls</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="70" y="170" width="500" height="380" rx="24" fill="#0d2c29" stroke="#14b8a6" stroke-width="2"/>
+    <text x="105" y="220" fill="#5eead4" font-size="20" font-weight="700">CLAIM 1 · PROPOSITION 3.1</text>
+    <text x="105" y="285" fill="#f0fdfa" font-size="54" font-weight="700">6,350</text>
+    <text x="105" y="318" fill="#ccfbf1" font-size="20">compiled Boolean formulas</text>
+    <text x="105" y="375" fill="#f0fdfa" font-size="38" font-weight="700">3.33 × 10⁻¹⁶</text>
+    <text x="105" y="408" fill="#ccfbf1" font-size="20">maximum score error</text>
+    <text x="105" y="468" fill="#86efac" font-size="23" font-weight="700">3 / 3 controls rejected</text>
+    <text x="105" y="505" fill="#94a3b8" font-size="17">CI violations and constant mixing</text>
+    <rect x="630" y="170" width="500" height="380" rx="24" fill="#0d2c29" stroke="#14b8a6" stroke-width="2"/>
+    <text x="665" y="220" fill="#5eead4" font-size="20" font-weight="700">CLAIM 5 · PROPOSITION C.2</text>
+    <text x="665" y="285" fill="#f0fdfa" font-size="54" font-weight="700">27,000</text>
+    <text x="665" y="318" fill="#ccfbf1" font-size="20">constructive events exhausted</text>
+    <text x="665" y="375" fill="#f0fdfa" font-size="38" font-weight="700">3.33 × 10⁻¹⁶</text>
+    <text x="665" y="408" fill="#ccfbf1" font-size="20">maximum score error</text>
+    <text x="665" y="468" fill="#86efac" font-size="23" font-weight="700">Invalid overlap rejected</text>
+    <text x="665" y="505" fill="#94a3b8" font-size="17">neither nested nor mutually exclusive</text>
+  </g>
+  <text x="70" y="615" fill="#5eead4" font-family="Arial, sans-serif" font-size="19">Scope: exhaustive certificates for the stated finite categorical constructions, not a numerical proof of arbitrary continuous models.</text>
+</svg>
