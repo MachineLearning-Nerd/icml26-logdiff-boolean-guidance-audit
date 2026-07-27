@@ -1,0 +1,123 @@
+{
+  "attempts": {
+    "10": 1,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 1,
+    "15": 1,
+    "8": 1,
+    "9": 1
+  },
+  "binding": {
+    "container_image": "ghcr.io/astral-sh/uv:python3.12-bookworm",
+    "contract_sha256": "cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+    "environment_fingerprint_sha256": "eeaeb6c2a480fca9bb4488f1972ac4143a98841f296e9294116ce8fa2d1b9970",
+    "hardware_flavor": "cpu-upgrade",
+    "input_archive_sha256": "a0bbb9678f72cb2239fb1dec62fc8decb8ee0706a97e19e0ec6a59983c7c3958",
+    "input_manifest_sha256": "cebadd2ffd0342e8a8bd4bb1a700f6620775d7d6583017a630316fe6d9b14e55",
+    "machine": "x86_64",
+    "numpy": "1.26.4",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "easydict": "1.13",
+      "lmdb": "2.3.0",
+      "meeko": "0.3.0",
+      "numpy": "1.26.4",
+      "openbabel-wheel": "3.1.1.23",
+      "pandas": "2.2.3",
+      "psutil": "7.2.2",
+      "rdkit": "2026.3.4",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.15.1",
+      "torch-cluster": "1.6.3+pt29cpu",
+      "torch-geometric": "2.6.1",
+      "torch-scatter": "2.1.2+pt29cpu",
+      "tqdm": "4.69.0",
+      "vina": "1.2.7",
+      "wandb": "0.28.1"
+    },
+    "plan_sha256": "096d1703bbeb52f1ebf116a063d48c1bf5969f2b02473e56fd5b8d159f5f1dec",
+    "python": "3.12.12",
+    "source_files": {
+      "bootstrap": "db7c74ce867c6634362e98e95d6c9ff1e270c266f130805073481977d34b9eb4",
+      "requirements": "adfbefd63f4da5981b62b9c1702ae93470b13a9e69e67e5a73cec1913346bd2f",
+      "runner": "ce6b6a67f6e9f39bed4287b64c6c209b8398ba494ed3871fb8fedcabef783249",
+      "sources_manifest": "525fa2347e421ba669ce5068664939b0fabb9efd57e5451f7a7faed1ba3df55b"
+    },
+    "torch": "2.9.0+cpu",
+    "torch_cuda": null
+  },
+  "condition_pooling": "forbidden",
+  "elapsed_seconds": 9707.387500047684,
+  "logic": "logdiff_and_not",
+  "paper": "OAM1jJsMGp",
+  "route_id": "oam-replicates-cpu-v1",
+  "run_seed": 1,
+  "sample_indices": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "samples": [
+    {
+      "sample_index": 8,
+      "sample_seed": 100008,
+      "sample_sha256": "1db4ad7083785782006536300d9ecd0ba0331f4f8e519fdc36b0132486c24f7d",
+      "success_sha256": "6cb5e402552fc1e706dc8b3fb0c2a1906f5c2878b1f62cbc2b2cef6f29eb4ef6"
+    },
+    {
+      "sample_index": 9,
+      "sample_seed": 100009,
+      "sample_sha256": "aa7f31a7b943d63690be9aa151d1c67fe48719d507352e27a3c1ac7d84dd8db2",
+      "success_sha256": "9fa2270aeaeb6f8fb2eaff743a07b7612fb555f1894319cb838a1b31765f636e"
+    },
+    {
+      "sample_index": 10,
+      "sample_seed": 100010,
+      "sample_sha256": "0a3a3c53c855d36a23851f427b6e9528d89c5d5199d4c9f51af594765dbc0e2d",
+      "success_sha256": "4de4a110653ce61ed783d7c01e5122b0cbf08c02cda16524f4b8e8a50f7f8064"
+    },
+    {
+      "sample_index": 11,
+      "sample_seed": 100011,
+      "sample_sha256": "95ac7c2e06d4685d2eb3e72dae1e85b9139c121c21b5208318cc460af2dc3cc3",
+      "success_sha256": "9c3f0d29deeed3ad82d57254f41f2fa356863e3df6c6722617944e2e589526b6"
+    },
+    {
+      "sample_index": 12,
+      "sample_seed": 100012,
+      "sample_sha256": "638322d061586f579b48e818f8ce4a657e500e24566fb8856037f4070f68e55f",
+      "success_sha256": "2cdc4c0e25206e324b002ccffd4c2edf22944b38517a89c46f596aaed4362a68"
+    },
+    {
+      "sample_index": 13,
+      "sample_seed": 100013,
+      "sample_sha256": "397664766904fa00ac66ceb0d9f0b41c21bed10a616659c5535ce8bdb3c121d5",
+      "success_sha256": "0ad5911e776d5acf82ce81275dbab8159e6ef331c0f7f81a453d1de7f5eb940d"
+    },
+    {
+      "sample_index": 14,
+      "sample_seed": 100014,
+      "sample_sha256": "70b89fdb097c5ff1d18a8c9ad86becf7902bbaab48476433af0ea642b84adc59",
+      "success_sha256": "efff8064311856552cedcb6ea02833f88a2fe5eb4a9887183ea2b7e66d0c7f75"
+    },
+    {
+      "sample_index": 15,
+      "sample_seed": 100015,
+      "sample_sha256": "c1b99f5c47c5cccc4a73e7f770585957ff4de4e8bf0b4aff89056a9929192313",
+      "success_sha256": "99f6a373d6a4cf223ab4a42b0df7f08618e7c0d991b9010f6e999a576d03ae0f"
+    }
+  ],
+  "schema_version": 1,
+  "slice": {
+    "sample_start": 8,
+    "sample_stop": 16,
+    "slice_id": "s01"
+  }
+}

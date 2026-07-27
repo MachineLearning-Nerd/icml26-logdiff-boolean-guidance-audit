@@ -1,0 +1,66 @@
+{
+  "claim_id": 4,
+  "paper": "Logical Guidance for the Exact Composition of Diffusion Models",
+  "source": {
+    "arxiv_id": "2602.05549",
+    "domain_anchor": "S4.SS2.p1.1",
+    "metric_anchor": "S4.SS2.p4.1",
+    "and_table_anchor": "S4.T5",
+    "and_not_table_anchor": "S4.T6",
+    "protocol_anchor": "A6.p1.1"
+  },
+  "statement": "On GRM5-RRM1, LOGDIFF has AND docking-product 73.20 +/- 3.18 versus DualDiff 71.87 +/- 3.33, and AND-NOT target separation 0.94 +/- 0.24 versus DualDiff 0.28 +/- 0.08.",
+  "domain": {
+    "target_A": {
+      "name": "GRM5",
+      "uniprot": "P41594"
+    },
+    "target_B": {
+      "name": "RRM1",
+      "uniprot": "P23921"
+    },
+    "experiments_per_method_and_condition": 8,
+    "ligands_per_experiment": 32,
+    "ligand_size_atoms": 23,
+    "denoising_steps": 1000,
+    "inverse_temperature_beta": 2.0,
+    "docking": "AutoDock Vina",
+    "conditions": [
+      "AND",
+      "AND-NOT"
+    ],
+    "methods_required_for_direct_comparison": [
+      "LOGDIFF",
+      "DualDiff"
+    ]
+  },
+  "paper_values": {
+    "AND": {
+      "metric": "A*B docking-score product",
+      "LOGDIFF_mean": 73.20,
+      "LOGDIFF_spread": 3.18,
+      "DualDiff_mean": 71.87,
+      "DualDiff_spread": 3.33
+    },
+    "AND-NOT": {
+      "metric": "average difference between minimum and maximum target docking scores",
+      "LOGDIFF_mean": 0.94,
+      "LOGDIFF_spread": 0.24,
+      "DualDiff_mean": 0.28,
+      "DualDiff_spread": 0.08
+    }
+  },
+  "direct_verification_requirements": [
+    "Eight independent 32-ligand experiments for each method and condition",
+    "The named LOGDIFF and DualDiff algorithms, not a nearby proxy",
+    "Exactly 23 atoms, 1000 denoising steps, beta 2.0, and the aligned GRM5-RRM1 pockets",
+    "AutoDock Vina scores for both targets for every valid ligand",
+    "An explicit definition of the reported spread and the AND-NOT delta statistic",
+    "Independent payload, docking, aggregation, and method-label checks",
+    "A negative control that detects corrupted target labels, method labels, or docking rows"
+  ],
+  "verified_if": "A faithful full campaign reproduces the reported method comparison with protocol parity and uncertainty visible.",
+  "falsified_if": "A faithful full campaign satisfying every paper assumption yields an assumption-satisfying contradiction to the stated values or comparison.",
+  "blocked_if": "Any method, condition, experiment, raw ligand set, docking table, exact source/input binding, or metric definition needed for the direct comparison is absent.",
+  "partial_evidence_rule": "Incomplete ligands, partial experiments, LOGDIFF-only campaigns, or undocked payloads cannot establish VERIFIED or FALSIFIED."
+}

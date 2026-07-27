@@ -1,0 +1,41 @@
+{
+  "audited_utc": "2026-07-27T12:42:00Z",
+  "author_image_repository": {
+    "url": "https://github.com/TanjaBien/LogDiff",
+    "commit": "94ef35bafd4b4239e9832d8295128c09e8fc1472",
+    "archive_sha256": "d3e7f6a56f665055fd39d54ebdc8c6f0d755e4752877be33a2cdce07be5b4086",
+    "readme_scope": "ColoredMNIST, Shapes3D, and CelebA",
+    "molecular_code_link": "https://github.com/nec-research/Logical-Guidance-for-the-Exact-Composition-of-Diffusion-Models"
+  },
+  "molecular_code_link_retrieval": {
+    "http_status": 404,
+    "response_bytes": 325872,
+    "response_sha256": "52af360528d9c2872807fdf19e5b752cee932d0a6863f4700d260860c7b1caf3",
+    "user_agent": "OpenResearch-Reproduction-Audit/1.0 (+https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance)"
+  },
+  "historical_route_binding": {
+    "route_id": "oam-replicates-cpu-v1",
+    "contract_sha256": "cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+    "runner_sha256": "ce6b6a67f6e9f39bed4287b64c6c209b8398ba494ed3871fb8fedcabef783249",
+    "requirements_sha256": "adfbefd63f4da5981b62b9c1702ae93470b13a9e69e67e5a73cec1913346bd2f",
+    "input_archive_bytes": 63049318,
+    "input_archive_sha256": "a0bbb9678f72cb2239fb1dec62fc8decb8ee0706a97e19e0ec6a59983c7c3958",
+    "environment_fingerprint_sha256": "eeaeb6c2a480fca9bb4488f1972ac4143a98841f296e9294116ce8fa2d1b9970",
+    "hardware_flavor": "cpu-upgrade",
+    "observed_cpu_count": 64
+  },
+  "required_local_paths": [
+    "repro/hf/run_oam_replicate_cpu_slice.py",
+    "repro/hf/import_oam_cpu_replicates_terminal.py",
+    "repro/hf/requirements-cpu-upgrade.txt",
+    "repro/configs/oam_hf_cpu_replicates_v1.json",
+    "outputs/molecular-recovery/colab-cuda-handoff/oam-colab-cuda-input.tar.gz"
+  ],
+  "searched_roots": [
+    "/Users/dineshjinjala/Documents/AllCode/ICMLPapers/OpenSearch",
+    "/Users/dineshjinjala/.cache/openresearch"
+  ],
+  "recovered_required_paths": [],
+  "resume_decision": "BLOCKED",
+  "reason": "The hash-bound runner, contract, requirements, importer, and 63 MB scientific input archive are absent. Resuming under reconstructed files would change the source/input contract."
+}

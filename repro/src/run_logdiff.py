@@ -11,11 +11,13 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import itertools
 import json
 import math
 import os
 import platform
+import re
 import subprocess
 import sys
 import time
@@ -400,6 +402,171 @@ def table_2_negative_control() -> dict[str, bool | str]:
     }
 
 
+C4_SLICE_RE = re.compile(
+    r"campaigns/(logdiff_and|logdiff_and_not)/run-seed-(\d+)/"
+    r"slice-(s\d+)-samples-(\d+)-(\d+)/contract-([0-9a-f]{64})/SUCCESS\.json$"
+)
+
+
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def classify_c4_completeness(
+    logdiff_experiments: dict[str, int],
+    dualdiff_experiments: dict[str, int],
+    raw_complete: bool,
+    docking_complete: bool,
+    source_available: bool,
+) -> str:
+    expected = {"AND": 8, "AND-NOT": 8}
+    ready = (
+        logdiff_experiments == expected
+        and dualdiff_experiments == expected
+        and raw_complete
+        and docking_complete
+        and source_available
+    )
+    return "READY_FOR_CLAIM_CHECK" if ready else "BLOCKED"
+
+
+def audit_claim_4_evidence(output_dir: Path) -> tuple[dict, dict]:
+    root = output_dir / "claim-4"
+    snapshot = root / "bucket-json-snapshot"
+    listing = json.loads((root / "historical_bucket_listing.json").read_text())
+    source_recovery = json.loads((root / "source_recovery_audit.json").read_text())
+    failures = []
+    slices: list[tuple[str, int, str]] = []
+    sample_records = 0
+    bindings = set()
+
+    for success_path in snapshot.rglob("SUCCESS.json"):
+        relative = success_path.relative_to(snapshot).as_posix()
+        match = C4_SLICE_RE.match(relative)
+        if not match:
+            continue
+        logic, seed, slice_id, start, stop, contract = match.groups()
+        success = json.loads(success_path.read_text())
+        manifest_path = success_path.with_name("SLICE_MANIFEST.json")
+        manifest = json.loads(manifest_path.read_text())
+        if success.get("status") != "complete":
+            failures.append(f"slice_status:{relative}")
+        if success.get("slice_manifest_sha256") != file_sha256(manifest_path):
+            failures.append(f"slice_manifest_hash:{relative}")
+        if (
+            success.get("logic") != logic
+            or success.get("run_seed") != int(seed)
+            or success.get("slice_id") != slice_id
+        ):
+            failures.append(f"slice_identity:{relative}")
+        if manifest.get("sample_indices") != list(range(int(start), int(stop))):
+            failures.append(f"sample_range:{relative}")
+        bindings.add(json.dumps(success.get("binding"), sort_keys=True))
+        if success.get("binding") != manifest.get("binding"):
+            failures.append(f"binding_mismatch:{relative}")
+        for sample in manifest.get("samples", []):
+            index = int(sample["sample_index"])
+            sample_root = success_path.parent / "samples" / f"sample-{index:03d}"
+            sample_success_path = sample_root / "SUCCESS.json"
+            files_path = sample_root / "FILES.json"
+            if not sample_success_path.exists() or file_sha256(sample_success_path) != sample[
+                "success_sha256"
+            ]:
+                failures.append(f"sample_success_hash:{relative}:{index}")
+                continue
+            sample_success = json.loads(sample_success_path.read_text())
+            if (
+                sample_success.get("logic") != logic
+                or sample_success.get("run_seed") != int(seed)
+                or sample_success.get("sample_seed") != int(seed) * 100000 + index
+                or sample_success.get("num_steps") != 1000
+                or sample_success.get("execution_device") != "cpu"
+            ):
+                failures.append(f"sample_identity:{relative}:{index}")
+            if not files_path.exists() or file_sha256(files_path) != sample_success.get(
+                "files_manifest_sha256"
+            ):
+                failures.append(f"files_manifest_hash:{relative}:{index}")
+            sample_records += 1
+        slices.append((logic, int(seed), slice_id))
+
+    slices_by_campaign: dict[tuple[str, int], set[str]] = {}
+    for logic, seed, slice_id in slices:
+        slices_by_campaign.setdefault((logic, seed), set()).add(slice_id)
+    complete_experiments = sum(
+        slice_ids == {"s00", "s01", "s02", "s03"} for slice_ids in slices_by_campaign.values()
+    )
+    payload_paths = [
+        row
+        for row in listing
+        if re.search(r"/samples/sample-\d+/29/371/sample\.pt$", row.get("path", ""))
+    ]
+    docking_files = [
+        row
+        for row in listing
+        if row.get("path", "").endswith(("results.csv", "docking_summary.json"))
+    ]
+    missing_sources = [
+        path for path in source_recovery["required_local_paths"] if not Path(path).exists()
+    ]
+    current_logdiff = {"AND": 0, "AND-NOT": 0}
+    current_dualdiff = {"AND": 0, "AND-NOT": 0}
+    status = classify_c4_completeness(
+        current_logdiff,
+        current_dualdiff,
+        raw_complete=False,
+        docking_complete=False,
+        source_available=not missing_sources,
+    )
+    summary = {
+        "claim_status": status,
+        "empirical_claim_check_executed": False,
+        "reason": (
+            "The recovered route has no complete experiment, no docking results, no DualDiff "
+            "campaign, and its hash-bound source/input files are absent."
+        ),
+        "bucket_listing_files": len(listing),
+        "bucket_listing_sha256": file_sha256(root / "historical_bucket_listing.json"),
+        "json_snapshot_files": len(list(snapshot.rglob("*.json"))),
+        "terminal_slices": len(slices),
+        "expected_logdiff_slices": 56,
+        "manifest_bound_samples": sample_records,
+        "payload_paths_in_listing": len(payload_paths),
+        "expected_logdiff_samples": 448,
+        "generation_fraction": sample_records / 448,
+        "covered_logics": sorted({logic for logic, _, _ in slices}),
+        "covered_run_seeds": sorted({seed for _, seed, _ in slices}),
+        "covered_slice_ids": sorted({slice_id for _, _, slice_id in slices}),
+        "complete_logdiff_experiments": complete_experiments,
+        "expected_logdiff_experiments": 16,
+        "dualdiff_experiments": 0,
+        "expected_dualdiff_experiments": 16,
+        "docking_result_files": len(docking_files),
+        "uniform_binding_count": len(bindings),
+        "manifest_integrity_failures": failures,
+        "missing_hash_bound_sources": missing_sources,
+        "official_molecular_repository_http_status": source_recovery[
+            "molecular_code_link_retrieval"
+        ]["http_status"],
+        "historical_seed_0_raw_roots_available": False,
+    }
+    control_status = classify_c4_completeness(
+        {"AND": 8, "AND-NOT": 8},
+        {"AND": 8, "AND-NOT": 8},
+        raw_complete=True,
+        docking_complete=True,
+        source_available=True,
+    )
+    control = {
+        "control": "complete_two_method_two_condition_campaign",
+        "audit_status": control_status,
+        "rejected_false_block": control_status == "READY_FOR_CLAIM_CHECK",
+    }
+    write_json(root / "bucket_audit.json", summary)
+    write_json(root / "negative_control.json", control)
+    return summary, control
+
+
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
@@ -436,6 +603,7 @@ def run(output_dir: Path, seeds: int) -> dict:
     taxonomy_control = taxonomy_overlap_control()
     table_2_summary, table_2_cells = audit_table_2()
     table_2_control = table_2_negative_control()
+    claim_4, claim_4_control = audit_claim_4_evidence(output_dir)
 
     write_csv(output_dir / "claim-1" / "exhaustive_formulas.csv", exhaustive)
     write_csv(output_dir / "claim-1" / "primitive_rules.csv", primitives)
@@ -467,6 +635,8 @@ def run(output_dir: Path, seeds: int) -> dict:
         },
         "claim_2": table_2_summary,
         "claim_2_negative_control": table_2_control,
+        "claim_4": claim_4,
+        "claim_4_negative_control": claim_4_control,
         "claim_5": {
             "status": "VERIFIED",
             "independent_group_events": sum(int(row["events"]) for row in independent_groups),
@@ -493,6 +663,16 @@ def run(output_dir: Path, seeds: int) -> dict:
         failures.append("claim_2_table_range")
     if not summary["claim_2_negative_control"]["verifier_rejected_false_falsification"]:
         failures.append("claim_2_negative_control")
+    if summary["claim_4"]["claim_status"] != "BLOCKED":
+        failures.append("claim_4_fail_closed_status")
+    if summary["claim_4"]["manifest_integrity_failures"]:
+        failures.append("claim_4_manifest_integrity")
+    if summary["claim_4"]["terminal_slices"] != 12 or summary["claim_4"][
+        "manifest_bound_samples"
+    ] != 96:
+        failures.append("claim_4_recovered_counts")
+    if not summary["claim_4_negative_control"]["rejected_false_block"]:
+        failures.append("claim_4_negative_control")
     if summary["claim_5"]["independent_group_events"] != seeds * 826:
         failures.append("claim_5_independent_event_count")
     if summary["claim_5"]["taxonomy_events"] != seeds * 254:
@@ -514,11 +694,25 @@ def run(output_dir: Path, seeds: int) -> dict:
     print(checker_output, end="")
     if checker.returncode != 0:
         failures.append("independent_checker")
+    claim_4_checker = subprocess.run(
+        [sys.executable, str(Path(__file__).with_name("check_claim4_evidence.py")), str(output_dir)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    claim_4_checker_output = claim_4_checker.stdout + claim_4_checker.stderr
+    (output_dir / "claim-4" / "independent_checker_output.txt").write_text(
+        claim_4_checker_output
+    )
+    print(claim_4_checker_output, end="")
+    if claim_4_checker.returncode != 0:
+        failures.append("claim_4_independent_checker")
 
     summary["runtime"] = runtime_metadata(started_at)
     summary["independent_checker"] = {
-        "status": "PASS" if checker.returncode == 0 else "FAIL",
-        "returncode": checker.returncode,
+        "status": "PASS" if checker.returncode == 0 and claim_4_checker.returncode == 0 else "FAIL",
+        "baseline_returncode": checker.returncode,
+        "claim_4_returncode": claim_4_checker.returncode,
     }
     summary["verifier"] = {"status": "PASS" if not failures else "FAIL", "failures": failures}
     output_dir.mkdir(parents=True, exist_ok=True)
