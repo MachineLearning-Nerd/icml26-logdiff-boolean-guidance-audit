@@ -9,3 +9,5 @@ paper.txt
 
 outputs/
 .DS_Store
+.venv/
+.openresearch/artifacts/**/*.tmp

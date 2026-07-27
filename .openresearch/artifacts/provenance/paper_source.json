@@ -1,0 +1,17 @@
+{
+  "url": "https://ar5iv.labs.arxiv.org/html/2602.05549",
+  "retrieved_at_utc": "2026-07-27T11:45:56Z",
+  "user_agent": "OpenResearch-Reproduction-Audit/1.0 (+https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance)",
+  "bytes": 753729,
+  "sha256": "67336441b284337c309cd66e2aee8d3a6bd01da716c145debe1319387b9c321a",
+  "anchors": {
+    "claim_1": "#S3.SS1.1",
+    "claim_2": "#S3.T2",
+    "claim_3": "#S4.T3",
+    "claim_4_and": "#S4.T5",
+    "claim_4_and_not": "#S4.T6",
+    "claim_5": "#A3.SS2.4",
+    "celeba_metric_protocol": "#A5.SS2",
+    "molecular_protocol": "#A6"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "claim_id": 1,
+  "paper_anchor": "Proposition 3.1",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2602.05549#S3.SS1.1",
+  "verdict_target": "VERIFIED",
+  "domain": "All 254 nonconstant events over three independent binary categorical variables, for each of 25 deterministic posterior settings",
+  "assumptions": [
+    "Every conjunction joins conditionally independent subformulas",
+    "Every disjunction joins conditionally independent or mutually exclusive subformulas",
+    "All tested posterior probabilities are strictly between zero and one",
+    "Posterior maps are differentiable softmax functions"
+  ],
+  "acceptance": {
+    "compiled_formula_count": 6350,
+    "primitive_rule_count": 100,
+    "maximum_probability_error": 1e-14,
+    "maximum_score_error": 1e-14,
+    "maximum_finite_difference_error": 1e-8,
+    "negative_controls_rejected": 3
+  },
+  "verifier": "repro/src/run_logdiff.py",
+  "fixed_command": "uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25"
+}

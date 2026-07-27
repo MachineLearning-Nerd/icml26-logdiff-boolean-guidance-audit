@@ -1,0 +1,21 @@
+{
+  "project_id": "b9dd34be-c3e8-4d56-badc-224106c43fff",
+  "repository": "MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance",
+  "baseline_branch": "main",
+  "required_start_sha": "c90e5cffa0a76236e194209fc07d6e424ef9c42b",
+  "observed_head": "c90e5cffa0a76236e194209fc07d6e424ef9c42b",
+  "observed_main": "c90e5cffa0a76236e194209fc07d6e424ef9c42b",
+  "observed_origin_main": "c90e5cffa0a76236e194209fc07d6e424ef9c42b",
+  "worktree_clean_before_changes": true,
+  "experiment_tree_initially_empty": true,
+  "initial_run_count": 0,
+  "initial_project_run_command": null,
+  "disk_available_gib": 13,
+  "ag_files_on_disk": [],
+  "inline_ag_instructions_read": true,
+  "environment_names_audited_without_values": true,
+  "orx_running_jobs_at_start": 0,
+  "judged_space_revision": "1fd04429cb112e90be5fa2bb7a19b827667922bf",
+  "judged_space_manifest_entries": 23,
+  "judged_space_manifest_sha256": "6ae4f78858f549b10c9e35fab00b1e6019b96345776212010da4624141995bc6"
+}
