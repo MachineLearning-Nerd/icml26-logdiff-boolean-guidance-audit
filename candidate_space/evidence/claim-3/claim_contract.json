@@ -1,0 +1,59 @@
+{
+  "claim_id": 3,
+  "paper": "Logical Guidance for the Exact Composition of Diffusion Models",
+  "source": {
+    "arxiv_id": "2602.05549",
+    "section_anchor": "S4.SS1.p7.1",
+    "table_anchor": "S4.T3",
+    "protocol_anchor": "A5.SS2.SSS0.Px3.p1.1"
+  },
+  "statement": "On CelebA negation, LOGDIFF has FID 23.61 versus 32.87 for the constant baseline, while AND and OR-CI conformity is comparable to the baseline.",
+  "domain": {
+    "dataset": "CelebA",
+    "attributes": [
+      "Blond/Non-blond",
+      "Male/Female"
+    ],
+    "tasks": [
+      "AND",
+      "NOT",
+      "OR-CI"
+    ],
+    "samples_per_task_and_method": 5000,
+    "queries_per_task": 50,
+    "images_per_query": 100,
+    "fid_implementation": "clean-fid"
+  },
+  "paper_values": {
+    "AND": {
+      "constant_cs": 0.63,
+      "constant_fid": 19.02,
+      "logdiff_cs": 0.63,
+      "logdiff_fid": 19.02
+    },
+    "NOT": {
+      "constant_cs": 0.75,
+      "constant_fid": 32.87,
+      "logdiff_cs": 0.80,
+      "logdiff_fid": 23.61
+    },
+    "OR-CI": {
+      "constant_cs": 0.93,
+      "constant_fid": 17.11,
+      "logdiff_cs": 0.97,
+      "logdiff_fid": 18.47
+    }
+  },
+  "direct_verification_requirements": [
+    "Author-equivalent CelebA diffusion, composition-classifier, and judge weights",
+    "The paper's 5000 samples per task and method with 50 queries of 100 images",
+    "clean-fid evaluated independently for each task",
+    "Deterministic seeds plus uncertainty across independent generation replicates",
+    "Independent conformity and FID checker",
+    "Negative control that detects a deliberately corrupted method label or image set"
+  ],
+  "verified_if": "A faithful executable campaign reproduces the direction of the NOT FID advantage and the reported AND/OR-CI conformity relationship, with uncertainty and protocol parity fully exposed.",
+  "falsified_if": "A faithful executable campaign satisfying every stated protocol assumption yields an assumption-satisfying contradiction, such as a statistically supported reversal of the NOT FID ordering.",
+  "blocked_if": "The author-equivalent model state or faithful metric protocol is unavailable, and neither direct verification nor assumption-satisfying falsification can be executed.",
+  "release_audit_scope": "The release audit tests executability only. It must never relabel an absent-checkpoint or protocol-mismatch result as empirical verification or falsification."
+}

@@ -1,0 +1,6 @@
+{
+  "checker": "independent Claim 3 release-integrity checker",
+  "failures": [],
+  "scientific_claim_status": "BLOCKED",
+  "status": "PASS"
+}

@@ -1,0 +1,11 @@
+{
+  "audit_status": "READY_TO_RUN",
+  "control": "complete_release_with_matching_clean_fid_protocol",
+  "details": {
+    "fid_implementation_mismatch": false,
+    "missing_checkpoint_paths": [],
+    "missing_composition_dataset_config": false,
+    "sample_accounting_mismatch": false
+  },
+  "rejected_false_block": true
+}

@@ -1,0 +1,41 @@
+{
+  "claim_status": "BLOCKED",
+  "empirical_generation_executed": false,
+  "fid_implementation_mismatch": true,
+  "generated_samples_per_task": 5000,
+  "missing_checkpoint_paths": [
+    "checkpoints/celeba/celeba_male_haircolors_normal/tensorboard/version_0/checkpoints/epoch_epoch=589-step_step=750000.ckpt",
+    "checkpoints/celeba/cs_celebA_composition_100epochs_male_haircolors/epoch=99-step=254400.ckpt",
+    "checkpoints/celeba/cs_celebA_judge_10epochs_male_haircolors/checkpoints/epoch=9-step=15670.ckpt"
+  ],
+  "missing_composition_dataset_config": true,
+  "paper_fid_implementation": "clean-fid",
+  "reason": "Author-equivalent weights and exact executable metric protocol are unavailable; release failure is not empirical falsification.",
+  "release_fid_implementation": "torchmetrics.image.fid.FrechetInceptionDistance",
+  "reported_samples_argument": 500000,
+  "sample_accounting_mismatch": true,
+  "source_archive_sha256": "d3e7f6a56f665055fd39d54ebdc8c6f0d755e4752877be33a2cdce07be5b4086",
+  "source_commit": "94ef35bafd4b4239e9832d8295128c09e8fc1472",
+  "source_url": "https://github.com/TanjaBien/LogDiff",
+  "table_3": {
+    "AND": {
+      "constant_cs": 0.63,
+      "constant_fid": 19.02,
+      "logdiff_cs": 0.63,
+      "logdiff_fid": 19.02
+    },
+    "NOT": {
+      "constant_cs": 0.75,
+      "constant_fid": 32.87,
+      "logdiff_cs": 0.8,
+      "logdiff_fid": 23.61
+    },
+    "OR-CI": {
+      "constant_cs": 0.93,
+      "constant_fid": 17.11,
+      "logdiff_cs": 0.97,
+      "logdiff_fid": 18.47
+    }
+  },
+  "tree_file_count": 73
+}
