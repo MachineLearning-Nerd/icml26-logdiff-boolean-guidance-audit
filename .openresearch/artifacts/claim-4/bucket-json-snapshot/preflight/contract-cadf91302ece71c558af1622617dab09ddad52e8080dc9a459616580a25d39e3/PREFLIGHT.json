@@ -1,0 +1,82 @@
+{
+  "binding": {
+    "container_image": "ghcr.io/astral-sh/uv:python3.12-bookworm",
+    "contract_sha256": "cadf91302ece71c558af1622617dab09ddad52e8080dc9a459616580a25d39e3",
+    "environment_fingerprint_sha256": "eeaeb6c2a480fca9bb4488f1972ac4143a98841f296e9294116ce8fa2d1b9970",
+    "hardware_flavor": "cpu-upgrade",
+    "input_archive_sha256": "a0bbb9678f72cb2239fb1dec62fc8decb8ee0706a97e19e0ec6a59983c7c3958",
+    "input_manifest_sha256": "cebadd2ffd0342e8a8bd4bb1a700f6620775d7d6583017a630316fe6d9b14e55",
+    "machine": "x86_64",
+    "numpy": "1.26.4",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "easydict": "1.13",
+      "lmdb": "2.3.0",
+      "meeko": "0.3.0",
+      "numpy": "1.26.4",
+      "openbabel-wheel": "3.1.1.23",
+      "pandas": "2.2.3",
+      "psutil": "7.2.2",
+      "rdkit": "2026.3.4",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.15.1",
+      "torch-cluster": "1.6.3+pt29cpu",
+      "torch-geometric": "2.6.1",
+      "torch-scatter": "2.1.2+pt29cpu",
+      "tqdm": "4.69.0",
+      "vina": "1.2.7",
+      "wandb": "0.28.1"
+    },
+    "plan_sha256": "096d1703bbeb52f1ebf116a063d48c1bf5969f2b02473e56fd5b8d159f5f1dec",
+    "python": "3.12.12",
+    "source_files": {
+      "bootstrap": "db7c74ce867c6634362e98e95d6c9ff1e270c266f130805073481977d34b9eb4",
+      "requirements": "adfbefd63f4da5981b62b9c1702ae93470b13a9e69e67e5a73cec1913346bd2f",
+      "runner": "ce6b6a67f6e9f39bed4287b64c6c209b8398ba494ed3871fb8fedcabef783249",
+      "sources_manifest": "525fa2347e421ba669ce5068664939b0fabb9efd57e5451f7a7faed1ba3df55b"
+    },
+    "torch": "2.9.0+cpu",
+    "torch_cuda": null
+  },
+  "hard_ceilings": {
+    "all_slice_timeout_ceiling_usd": 10.08,
+    "authorized_aggregate_cap_usd": 40.0,
+    "docking_setup_retry_transfer_not_included": true,
+    "measured_projected_generation_usd": 3.849884136199951,
+    "per_slice_ceiling_usd": 0.18,
+    "preflight_ceiling_usd": 0.03,
+    "preflight_timeout_hours": 1,
+    "reservation_required_before_each_submission": true,
+    "route_timeout_ceiling_including_preflight_usd": 10.11,
+    "total_generation_slices": 56,
+    "verified_cpu_upgrade_usd_per_hour": 0.03
+  },
+  "observed_environment": {
+    "cpu_count": 64,
+    "memory_bytes": 529681854464,
+    "platform": "Linux-6.12.90-120.164.amzn2023.x86_64-x86_64-with-glibc2.36",
+    "python": "3.12.12 (main, Feb  3 2026, 05:51:02) [GCC 12.2.0]"
+  },
+  "paper": "OAM1jJsMGp",
+  "probe": {
+    "logic": "logdiff_and",
+    "result_sha256": "30e72578291dce93286ccb2d6a929bcd78b2711e1545411d13afc52d24ff4f12",
+    "steps": 20,
+    "wall_seconds": 147.81384897232056
+  },
+  "projection": {
+    "all_14_campaign_job_hours": 155.20454142093658,
+    "all_14_cost_usd_at_0.03_per_hour": 4.656136242628097,
+    "buffer": 1.35,
+    "campaign_cost_usd_at_0.03_per_hour": 0.33258116018772127,
+    "campaign_hours": 11.086038672924042,
+    "samples_per_slice": 8,
+    "slice_cost_usd_at_0.03_per_hour": 0.08314529004693032,
+    "slice_hours": 2.7715096682310105,
+    "workers": 8
+  },
+  "route_id": "oam-replicates-cpu-v1",
+  "schema_version": 1,
+  "scientific_evidence": false,
+  "status": "passed"
+}

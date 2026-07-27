@@ -1,0 +1,27 @@
+{
+  "claim": 4,
+  "route": 4,
+  "paper_table": {
+    "and_logdiff_mean": 73.2,
+    "and_dualdiff_mean": 71.87,
+    "and_not_logdiff_separation": 0.94,
+    "and_not_dualdiff_separation": 0.28
+  },
+  "claimed_ordering_holds_in_paper_table": true,
+  "synthetic_negative_control": {
+    "and_logdiff_mean": 70.0,
+    "and_dualdiff_mean": 72.0,
+    "and_not_logdiff_separation": 0.2,
+    "and_not_dualdiff_separation": 0.3,
+    "contradiction_detected": true
+  },
+  "recovered_evidence_admissible_as_counterexample": false,
+  "inadmissibility_reasons": [
+    "zero complete 32-ligand experiments",
+    "zero DualDiff experiments",
+    "zero docking-result files",
+    "only two of eight run seeds partially covered"
+  ],
+  "falsification_succeeded": false,
+  "status": "BLOCKED"
+}

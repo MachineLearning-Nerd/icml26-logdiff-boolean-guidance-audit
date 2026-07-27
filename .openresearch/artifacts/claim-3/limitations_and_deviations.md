@@ -8,3 +8,8 @@
   reported samples or measurements can be independently regenerated.
 - Missing files, a broken config, and a metric implementation mismatch are
   reproducibility blockers—not valid counterexamples to the empirical result.
+- The public Diffusers CelebA UNet is a deliberately rejected reconstruction
+  candidate, not a substitute for the paper's SiT and classifier states.
+- Four materially different routes were completed. None yields the exact
+  images, model state, or clean-fid measurements required to resolve the
+  empirical claim.

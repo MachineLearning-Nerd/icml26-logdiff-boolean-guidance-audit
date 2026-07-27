@@ -1,0 +1,72 @@
+{
+  "claim": 3,
+  "executed_utc": "2026-07-27",
+  "final_status": "BLOCKED",
+  "confidence": "LOW",
+  "exact_statement": {
+    "statement": "On CelebA negation, LoGDiff has FID 23.61 versus 32.87 for constant mixing, while AND and OR-CI conformity remains comparable.",
+    "domain": "CelebA Blond/Non-blond and Male/Female attributes; AND, NOT, and OR-CI tasks.",
+    "quantifiers": "For every task and method, generate 5000 samples as 50 queries with 100 images each and evaluate FID with clean-fid."
+  },
+  "routes": [
+    {
+      "route": 1,
+      "name": "exact author-release executability audit",
+      "interpretation": "Require the three checkpoint paths and exact clean-fid/sample protocol declared by the paper and release.",
+      "method": "Hash and enumerate the pinned 73-file author tree, resolve every config reference, and compare the executable evaluator against Appendix E.2.",
+      "commands": [
+        "uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25",
+        "uv run python repro/src/check_claim3_release.py .openresearch/artifacts"
+      ],
+      "result": "All three checkpoints are absent, the requested dataset config is absent, and the released evaluator uses TorchMetrics FID with inconsistent sample accounting rather than the paper's clean-fid protocol.",
+      "control": "A synthetic complete release with all paths and the clean-fid protocol reaches READY_TO_RUN.",
+      "resolved": false
+    },
+    {
+      "route": 2,
+      "name": "public author-checkpoint provenance search",
+      "interpretation": "Treat a checkpoint as author-equivalent only if its provenance resolves to the author release, declared filenames, or author account.",
+      "method": "Query official repository branches, tags, releases, and forks, then Hugging Face models, datasets, and Spaces for the author, project title, and exact checkpoint stems.",
+      "commands": [
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://api.github.com/repos/TanjaBien/LogDiff/branches?per_page=100'",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://api.github.com/repos/TanjaBien/LogDiff/releases?per_page=100'",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://huggingface.co/api/models?search=TanjaBien&limit=100'",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://huggingface.co/api/models?search=epoch_epoch%3D589-step_step%3D750000.ckpt&limit=100'"
+      ],
+      "result": "The official repository has one branch and no tags, releases, or forks. Author and exact-filename Hugging Face searches return no model, dataset, or Space. One dataset returned for generic LogDiff is an unrelated preference dataset and is rejected.",
+      "control": "The same APIs resolve the official main branch and the independent public CelebA model used in route 3.",
+      "resolved": false
+    },
+    {
+      "route": 3,
+      "name": "independent public-model protocol reconstruction audit",
+      "interpretation": "Test whether a public CelebA diffusion checkpoint can supply an exact executable equivalent even when the author weights are missing.",
+      "method": "Resolve shalpin87/diffusion_celeba at its pinned revision and inspect its complete model tree and roles against the LoGDiff diffusion, composition-classifier, and independent-judge requirements.",
+      "commands": [
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://huggingface.co/api/models/shalpin87/diffusion_celeba/revision/91d0ff0'",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://huggingface.co/api/models/shalpin87/diffusion_celeba/tree/91d0ff096e031c21b8313bd5877316a52900d4ec?recursive=true&expand=false'"
+      ],
+      "result": "The public revision resolves and exposes a 114,049,969-byte Diffusers UNet, but it contains neither the paper's SiT diffusion state nor the LoGDiff composition and judge classifiers. It can support a proxy study only, not the exact claim.",
+      "control": "The route positively resolves revision 91d0ff096e031c21b8313bd5877316a52900d4ec and its UNet blob while role matching rejects the missing LoGDiff states.",
+      "resolved": false
+    },
+    {
+      "route": 4,
+      "name": "assumption-satisfying falsification search",
+      "interpretation": "A falsification requires an exact-method 5000-image-per-task campaign using the stated attributes, queries, and clean-fid; missing weights or a proxy model cannot count.",
+      "method": "Restate the exact domain and quantifiers, audit Table 3 for a transcription contradiction, and test whether any recovered or public run is admissible as a counterexample.",
+      "commands": [
+        "uv run python repro/src/check_claim3_release.py .openresearch/artifacts"
+      ],
+      "result": "The quoted 23.61 and 32.87 values match Table 3. No exact-method image set or clean-fid output is recoverable. The public DDPM is not author-equivalent, so falsification did not succeed.",
+      "control": "A synthetic exact-protocol result with LoGDiff FID 35 and constant FID 30 is detected as a reversal; the paper table is not.",
+      "resolved": false,
+      "falsification_succeeded": false
+    }
+  ],
+  "unblockers": [
+    "The three author-equivalent CelebA checkpoints with provenance.",
+    "The exact dataset config and a clean-fid implementation matching Appendix E.2.",
+    "Raw 5000-image-per-task outputs or a fully executable exact-protocol campaign with independent conformity and FID checks."
+  ]
+}

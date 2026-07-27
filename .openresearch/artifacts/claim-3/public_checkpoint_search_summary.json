@@ -1,0 +1,38 @@
+{
+  "retrieved_utc": "2026-07-27",
+  "user_agent": "OpenResearch-Reproduction-Audit/1.0",
+  "official_repository": {
+    "branches": 1,
+    "branch_names": [
+      "main"
+    ],
+    "tags": 0,
+    "releases": 0,
+    "forks": 0
+  },
+  "author_equivalent_hugging_face_results": {
+    "models": 0,
+    "datasets": 0,
+    "spaces": 0
+  },
+  "exact_checkpoint_stem_results": {
+    "models": 0,
+    "datasets": 0,
+    "spaces": 0
+  },
+  "generic_logdiff_dataset_results": [
+    "motobrew/alf-dpo-logdiff-strict-v1"
+  ],
+  "generic_result_relevant": false,
+  "public_proxy_model": {
+    "id": "shalpin87/diffusion_celeba",
+    "revision": "91d0ff096e031c21b8313bd5877316a52900d4ec",
+    "library": "diffusers",
+    "unet_bytes": 114049969,
+    "contains_logdiff_diffusion_checkpoint": false,
+    "contains_composition_classifier": false,
+    "contains_independent_judge": false,
+    "exact_protocol_equivalent": false
+  },
+  "author_equivalent_checkpoint_found": false
+}

@@ -1,0 +1,7 @@
+{
+  "checker": "independent Claim 4 manifest and completeness checker",
+  "failures": [],
+  "scientific_claim_status": "BLOCKED",
+  "status": "PASS",
+  "terminal_slices_rederived": 12
+}

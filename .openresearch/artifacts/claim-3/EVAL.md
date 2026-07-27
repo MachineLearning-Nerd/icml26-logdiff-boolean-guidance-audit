@@ -11,3 +11,8 @@ control, or any accepted Claim 1/2/5 regression fails.
 
 Expected scientific verdict at this node: `BLOCKED`. A passing verifier means
 the BLOCKED distinction is supported; it does not mean the CelebA claim passed.
+
+The independent checker additionally requires exactly four distinct routes,
+requires the fourth to be an unsuccessful strict falsification route, validates
+the public-model positive control, and validates the synthetic FID-reversal
+negative control.
