@@ -400,6 +400,70 @@ def table_2_negative_control() -> dict[str, bool | str]:
     }
 
 
+def classify_celeba_release(snapshot: dict) -> tuple[str, dict]:
+    tree_paths = set(snapshot["tree_paths"])
+    missing_checkpoints = [
+        path for path in snapshot["celeba_required_checkpoint_paths"] if path not in tree_paths
+    ]
+    missing_dataset = snapshot["composition_dataset_requested"] not in tree_paths
+    paper_protocol = snapshot["paper_protocol"]
+    release_protocol = snapshot["release_protocol"]
+    fid_mismatch = release_protocol["fid_implementation"] != paper_protocol["fid_implementation"]
+    sample_accounting_mismatch = (
+        release_protocol["reported_samples_argument"] != paper_protocol["samples_per_task"]
+    )
+    blockers = bool(missing_checkpoints or missing_dataset or fid_mismatch)
+    return (
+        "BLOCKED" if blockers else "READY_TO_RUN",
+        {
+            "missing_checkpoint_paths": missing_checkpoints,
+            "missing_composition_dataset_config": missing_dataset,
+            "fid_implementation_mismatch": fid_mismatch,
+            "sample_accounting_mismatch": sample_accounting_mismatch,
+        },
+    )
+
+
+def audit_claim_3_release(output_dir: Path) -> tuple[dict, dict]:
+    snapshot_path = output_dir / "claim-3" / "author_release_snapshot.json"
+    snapshot = json.loads(snapshot_path.read_text())
+    status, details = classify_celeba_release(snapshot)
+    raw = {
+        "claim_status": status,
+        "empirical_generation_executed": False,
+        "reason": (
+            "Author-equivalent weights and exact executable metric protocol are unavailable; "
+            "release failure is not empirical falsification."
+        ),
+        "source_url": snapshot["source_url"],
+        "source_commit": snapshot["commit"],
+        "source_archive_sha256": snapshot["git_archive_sha256"],
+        "tree_file_count": len(snapshot["tree_paths"]),
+        **details,
+        "generated_samples_per_task": snapshot["release_protocol"]["generated_samples_per_task"],
+        "reported_samples_argument": snapshot["release_protocol"]["reported_samples_argument"],
+        "paper_fid_implementation": snapshot["paper_protocol"]["fid_implementation"],
+        "release_fid_implementation": snapshot["release_protocol"]["fid_implementation"],
+        "table_3": snapshot["table_3"],
+    }
+
+    complete = json.loads(json.dumps(snapshot))
+    complete["tree_paths"] += complete["celeba_required_checkpoint_paths"]
+    complete["tree_paths"].append(complete["composition_dataset_requested"])
+    complete["release_protocol"]["fid_implementation"] = complete["paper_protocol"]["fid_implementation"]
+    complete["release_protocol"]["reported_samples_argument"] = complete["paper_protocol"]["samples_per_task"]
+    control_status, control_details = classify_celeba_release(complete)
+    control = {
+        "control": "complete_release_with_matching_clean_fid_protocol",
+        "audit_status": control_status,
+        "rejected_false_block": control_status == "READY_TO_RUN",
+        "details": control_details,
+    }
+    write_json(output_dir / "claim-3" / "release_audit.json", raw)
+    write_json(output_dir / "claim-3" / "negative_control.json", control)
+    return raw, control
+
+
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
@@ -436,6 +500,7 @@ def run(output_dir: Path, seeds: int) -> dict:
     taxonomy_control = taxonomy_overlap_control()
     table_2_summary, table_2_cells = audit_table_2()
     table_2_control = table_2_negative_control()
+    claim_3, claim_3_control = audit_claim_3_release(output_dir)
 
     write_csv(output_dir / "claim-1" / "exhaustive_formulas.csv", exhaustive)
     write_csv(output_dir / "claim-1" / "primitive_rules.csv", primitives)
@@ -467,6 +532,8 @@ def run(output_dir: Path, seeds: int) -> dict:
         },
         "claim_2": table_2_summary,
         "claim_2_negative_control": table_2_control,
+        "claim_3": claim_3,
+        "claim_3_negative_control": claim_3_control,
         "claim_5": {
             "status": "VERIFIED",
             "independent_group_events": sum(int(row["events"]) for row in independent_groups),
@@ -493,6 +560,10 @@ def run(output_dir: Path, seeds: int) -> dict:
         failures.append("claim_2_table_range")
     if not summary["claim_2_negative_control"]["verifier_rejected_false_falsification"]:
         failures.append("claim_2_negative_control")
+    if summary["claim_3"]["claim_status"] != "BLOCKED":
+        failures.append("claim_3_fail_closed_status")
+    if not summary["claim_3_negative_control"]["rejected_false_block"]:
+        failures.append("claim_3_negative_control")
     if summary["claim_5"]["independent_group_events"] != seeds * 826:
         failures.append("claim_5_independent_event_count")
     if summary["claim_5"]["taxonomy_events"] != seeds * 254:
@@ -514,11 +585,23 @@ def run(output_dir: Path, seeds: int) -> dict:
     print(checker_output, end="")
     if checker.returncode != 0:
         failures.append("independent_checker")
+    claim_3_checker = subprocess.run(
+        [sys.executable, str(Path(__file__).with_name("check_claim3_release.py")), str(output_dir)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    claim_3_checker_output = claim_3_checker.stdout + claim_3_checker.stderr
+    (output_dir / "claim-3" / "independent_checker_output.txt").write_text(claim_3_checker_output)
+    print(claim_3_checker_output, end="")
+    if claim_3_checker.returncode != 0:
+        failures.append("claim_3_independent_checker")
 
     summary["runtime"] = runtime_metadata(started_at)
     summary["independent_checker"] = {
-        "status": "PASS" if checker.returncode == 0 else "FAIL",
-        "returncode": checker.returncode,
+        "status": "PASS" if checker.returncode == 0 and claim_3_checker.returncode == 0 else "FAIL",
+        "baseline_returncode": checker.returncode,
+        "claim_3_returncode": claim_3_checker.returncode,
     }
     summary["verifier"] = {"status": "PASS" if not failures else "FAIL", "failures": failures}
     output_dir.mkdir(parents=True, exist_ok=True)
