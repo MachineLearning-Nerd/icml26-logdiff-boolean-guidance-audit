@@ -12,3 +12,7 @@ on any integrity or negative-control failure.
 
 Expected scientific verdict at this node: `BLOCKED`. Passing means the
 incompleteness finding is reproducible, not that the molecular claim passed.
+
+The independent checker also requires exactly four distinct research routes,
+requires route 4 to be marked as the falsification route, and requires the
+current final status to remain `BLOCKED` after falsification fails.

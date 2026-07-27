@@ -14,3 +14,9 @@
   generation/docking roots are absent and are not accepted as current evidence.
 - The paper leaves Vina exhaustiveness, spread convention, and the signed
   delta formula underspecified.
+- The public FKC implementation is a related upstream, not the missing LoGDiff
+  molecular release; substituting it would not reproduce the exact named
+  method.
+- The four-route sequence exhausted source audit, historical recovery,
+  upstream reconstruction, and valid-counterexample search. None supplies the
+  complete exact-method evidence required to resolve the claim.

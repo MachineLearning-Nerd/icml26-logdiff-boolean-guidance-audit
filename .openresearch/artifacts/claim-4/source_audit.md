@@ -30,3 +30,14 @@ are preserved as raw evidence.
 The paper does not state the Vina exhaustiveness, the exact across-experiment
 spread convention, or an algebraic signed definition of delta. Historical
 reconstruction choices must therefore remain labeled as deviations.
+
+## Four verification routes
+
+The required low-confidence sequence is recorded in
+`verification_routes.json`. The routes are materially different: exact
+paper/release inspection, manifest-bound historical recovery, independent
+upstream reconstruction, and an assumption-satisfying falsification search.
+The fourth route did not find a valid counterexample: the quoted values match
+Tables 5 and 6, while the recovered partial outputs fail the paper's method,
+comparator, docking, and eight-experiment requirements. Claim 4 therefore
+remains `BLOCKED`, not falsified.

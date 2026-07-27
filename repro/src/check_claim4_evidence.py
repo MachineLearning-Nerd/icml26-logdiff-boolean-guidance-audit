@@ -27,6 +27,8 @@ def main() -> None:
     snapshot = root / "bucket-json-snapshot"
     summary = json.loads((root / "bucket_audit.json").read_text())
     control = json.loads((root / "negative_control.json").read_text())
+    routes = json.loads((root / "verification_routes.json").read_text())
+    falsification = json.loads((root / "falsification_check.json").read_text())
     failures: list[str] = []
     slices = []
     bindings = set()
@@ -98,12 +100,33 @@ def main() -> None:
         "rejected_false_block"
     ):
         failures.append("negative_control")
+    route_rows = routes.get("routes", [])
+    if [row.get("route") for row in route_rows] != [1, 2, 3, 4]:
+        failures.append("four_route_sequence")
+    if len({row.get("name") for row in route_rows}) != 4:
+        failures.append("distinct_route_names")
+    if routes.get("final_status") != "BLOCKED" or routes.get("confidence") != "LOW":
+        failures.append("route_fail_closed_status")
+    if route_rows and route_rows[-1].get("falsification_succeeded") is not False:
+        failures.append("falsification_route_status")
+    if (
+        falsification.get("claimed_ordering_holds_in_paper_table") is not True
+        or falsification.get("recovered_evidence_admissible_as_counterexample") is not False
+        or falsification.get("falsification_succeeded") is not False
+        or falsification.get("status") != "BLOCKED"
+    ):
+        failures.append("falsification_check")
+    if not falsification.get("synthetic_negative_control", {}).get(
+        "contradiction_detected"
+    ):
+        failures.append("falsification_negative_control")
 
     result = {
         "checker": "independent Claim 4 manifest and completeness checker",
         "status": "PASS" if not failures else "FAIL",
         "failures": failures,
         "terminal_slices_rederived": len(slices),
+        "verification_routes_rederived": len(route_rows),
         "scientific_claim_status": summary.get("claim_status"),
     }
     print(json.dumps(result, indent=2, sort_keys=True))

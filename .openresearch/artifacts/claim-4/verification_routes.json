@@ -1,0 +1,75 @@
+{
+  "claim": 4,
+  "executed_utc": "2026-07-27",
+  "final_status": "BLOCKED",
+  "confidence": "LOW",
+  "exact_statement": {
+    "and": "Across eight 32-ligand GRM5/RRM1 experiments, LoGDiff has mean docking-score product 73.20 +/- 3.18 and DualDiff has 71.87 +/- 3.33.",
+    "and_not": "Across eight 32-ligand GRM5/RRM1 experiments, LoGDiff has target separation 0.94 +/- 0.24 and DualDiff has 0.28 +/- 0.08.",
+    "domain": "GRM5/P41594 as target A and RRM1/P23921 as target B; ligands have 23 atoms; LoGDiff uses 1000 denoising steps and beta 2.0.",
+    "quantifiers": "Both comparisons require eight independent experiments of 32 ligands for each named method and logical condition."
+  },
+  "routes": [
+    {
+      "route": 1,
+      "name": "paper-and-official-release protocol audit",
+      "interpretation": "Treat Tables 5 and 6, Section 4.2, and Appendix F as the claim contract and require the authors' molecular implementation or an exact executable equivalent.",
+      "method": "Hash the paper source, inspect the paper anchors and the pinned author image repository, then retrieve its declared molecular repository with an explicit User-Agent.",
+      "commands": [
+        "curl -L --fail --silent --show-error -A 'OpenResearch-Reproduction-Audit/1.0 (+https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance)' https://ar5iv.labs.arxiv.org/html/2602.05549 -o /tmp/oam-paper.html",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS https://api.github.com/repos/nec-research/Logical-Guidance-for-the-Exact-Composition-of-Diffusion-Models"
+      ],
+      "result": "The paper contract is recoverable, but the declared molecular repository returns HTTP 404 and the image repository does not contain the molecular implementation.",
+      "control": "The same retrieval path resolves and hashes the pinned public FKC commit in route 3.",
+      "resolved": false
+    },
+    {
+      "route": 2,
+      "name": "hash-bound historical-campaign recovery",
+      "interpretation": "Accept prior outputs only if SUCCESS-last manifests, sample identities, source bindings, both methods, both conditions, docking tables, and all 8 x 32 experiments are present.",
+      "method": "Independently enumerate and rehash the complete historical bucket listing and all available JSON manifests.",
+      "commands": [
+        "uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25",
+        "uv run python repro/src/check_claim4_evidence.py .openresearch/artifacts"
+      ],
+      "result": "Twelve slices and 96 LoGDiff sample payloads are valid, but there are zero complete experiments, zero DualDiff experiments, and zero docking-result files.",
+      "control": "A synthetic complete two-method/two-condition campaign reaches READY_FOR_CLAIM_CHECK; the real partial campaign remains BLOCKED.",
+      "resolved": false
+    },
+    {
+      "route": 3,
+      "name": "independent upstream reconstruction",
+      "interpretation": "Attempt to reconstruct the released scientific stack from public primary sources rather than relying on the missing historical bundle.",
+      "method": "Resolve martaskrt/fkc-diffusion at the exact historical commit, enumerate its tree, inspect its molecular README and public data/checkpoint links, query the declared NEC repository, and search Hugging Face models, datasets, and Spaces by the paper title.",
+      "commands": [
+        "git ls-remote https://github.com/martaskrt/fkc-diffusion.git",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS https://api.github.com/repos/martaskrt/fkc-diffusion/commits/aa6f5ed4a0ebb91329d4cd5823cc7e77c5e196e6",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://api.github.com/repos/martaskrt/fkc-diffusion/git/trees/aa6f5ed4a0ebb91329d4cd5823cc7e77c5e196e6?recursive=1'",
+        "curl -A 'OpenResearch-Reproduction-Audit/1.0' -sS 'https://huggingface.co/api/models?search=Logical%20Guidance%20Exact%20Composition%20Diffusion%20Models&limit=100'",
+        "orx lit 'DualDiff dual-target molecular generation GRM5 RRM1 diffusion'",
+        "orx lit 'FKC diffusion molecular generation martaskrt'"
+      ],
+      "result": "The FKC source commit and its generic DualDiff/TargetDiff links are public, but the LoGDiff molecular repository is 404, the title searches return no artifacts, and the campaign-specific LoGDiff logic, recovered-weight identities, runner, importer, and 63 MB hash-bound archive cannot be reconstructed byte-for-byte.",
+      "control": "The discovery route positively resolves FKC commit aa6f5ed4a0ebb91329d4cd5823cc7e77c5e196e6 and its 440-entry Git tree while returning empty title searches and a 404 for the missing target.",
+      "resolved": false
+    },
+    {
+      "route": 4,
+      "name": "assumption-satisfying falsification search",
+      "interpretation": "Seek a counterexample only among complete eight-experiment, 32-ligand, exact-method campaigns with the paper's targets, method definitions, and metrics.",
+      "method": "Restate the exact domain and quantifiers, audit Tables 5 and 6 for a direct numerical contradiction, and test whether the recovered outputs satisfy the admissibility assumptions.",
+      "commands": [
+        "uv run python repro/src/check_claim4_evidence.py .openresearch/artifacts"
+      ],
+      "result": "The quoted means and spreads match Tables 5 and 6. The recovered 96 undocked LoGDiff samples lack complete experiments and the DualDiff comparator, so they are not an assumption-satisfying counterexample. Falsification did not succeed.",
+      "control": "A synthetic table in which the LoGDiff means are below the DualDiff means is detected as a contradiction; the paper table is not.",
+      "resolved": false,
+      "falsification_succeeded": false
+    }
+  ],
+  "unblockers": [
+    "The authors' exact molecular code and all checkpoint identities, or a hash-equivalent archived campaign bundle.",
+    "Complete raw generation and paired Vina docking outputs for LoGDiff and DualDiff, for both AND and AND-NOT, across eight 32-ligand experiments.",
+    "An exact definition of the separation statistic, spread convention, and Vina settings."
+  ]
+}

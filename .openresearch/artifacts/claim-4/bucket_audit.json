@@ -1,0 +1,43 @@
+{
+  "bucket_listing_files": 626,
+  "bucket_listing_sha256": "a046c234c3634c290534eb3bb49bcdf89b73ce690636222702825fb7069e1493",
+  "claim_status": "BLOCKED",
+  "complete_logdiff_experiments": 0,
+  "covered_logics": [
+    "logdiff_and",
+    "logdiff_and_not"
+  ],
+  "covered_run_seeds": [
+    1,
+    2
+  ],
+  "covered_slice_ids": [
+    "s00",
+    "s01",
+    "s02"
+  ],
+  "docking_result_files": 0,
+  "dualdiff_experiments": 0,
+  "empirical_claim_check_executed": false,
+  "expected_dualdiff_experiments": 16,
+  "expected_logdiff_experiments": 16,
+  "expected_logdiff_samples": 448,
+  "expected_logdiff_slices": 56,
+  "generation_fraction": 0.21428571428571427,
+  "historical_seed_0_raw_roots_available": false,
+  "json_snapshot_files": 242,
+  "manifest_bound_samples": 96,
+  "manifest_integrity_failures": [],
+  "missing_hash_bound_sources": [
+    "repro/hf/run_oam_replicate_cpu_slice.py",
+    "repro/hf/import_oam_cpu_replicates_terminal.py",
+    "repro/hf/requirements-cpu-upgrade.txt",
+    "repro/configs/oam_hf_cpu_replicates_v1.json",
+    "outputs/molecular-recovery/colab-cuda-handoff/oam-colab-cuda-input.tar.gz"
+  ],
+  "official_molecular_repository_http_status": 404,
+  "payload_paths_in_listing": 96,
+  "reason": "The recovered route has no complete experiment, no docking results, no DualDiff campaign, and its hash-bound source/input files are absent.",
+  "terminal_slices": 12,
+  "uniform_binding_count": 1
+}

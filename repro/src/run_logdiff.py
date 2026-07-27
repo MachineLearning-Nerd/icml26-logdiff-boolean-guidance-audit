@@ -435,6 +435,8 @@ def audit_claim_4_evidence(output_dir: Path) -> tuple[dict, dict]:
     snapshot = root / "bucket-json-snapshot"
     listing = json.loads((root / "historical_bucket_listing.json").read_text())
     source_recovery = json.loads((root / "source_recovery_audit.json").read_text())
+    verification_routes = json.loads((root / "verification_routes.json").read_text())
+    falsification_check = json.loads((root / "falsification_check.json").read_text())
     failures = []
     slices: list[tuple[str, int, str]] = []
     sample_records = 0
@@ -549,6 +551,8 @@ def audit_claim_4_evidence(output_dir: Path) -> tuple[dict, dict]:
             "molecular_code_link_retrieval"
         ]["http_status"],
         "historical_seed_0_raw_roots_available": False,
+        "verification_routes_completed": len(verification_routes.get("routes", [])),
+        "falsification_succeeded": falsification_check.get("falsification_succeeded"),
     }
     control_status = classify_c4_completeness(
         {"AND": 8, "AND-NOT": 8},
@@ -671,6 +675,10 @@ def run(output_dir: Path, seeds: int) -> dict:
         "manifest_bound_samples"
     ] != 96:
         failures.append("claim_4_recovered_counts")
+    if summary["claim_4"]["verification_routes_completed"] != 4:
+        failures.append("claim_4_route_count")
+    if summary["claim_4"]["falsification_succeeded"] is not False:
+        failures.append("claim_4_falsification_status")
     if not summary["claim_4_negative_control"]["rejected_false_block"]:
         failures.append("claim_4_negative_control")
     if summary["claim_5"]["independent_group_events"] != seeds * 826:
