@@ -12,6 +12,7 @@ from urllib.parse import unquote
 
 
 TEXT_SUFFIXES = {
+    ".csv",
     ".css",
     ".html",
     ".js",
