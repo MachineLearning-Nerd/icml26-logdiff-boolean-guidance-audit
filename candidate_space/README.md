@@ -18,5 +18,5 @@ tags:
 An open experiment logbook, published with [Trackio](https://github.com/gradio-app/trackio).
 
 Evaluator entrypoint: [open the canonical page index](pages/index.md). The
-first linked page is the current verifier; older Claim 3 material is explicitly
-marked **Historical rejected baseline**.
+first linked page is the current cumulative verifier. Older Claim 3 and Claim 4
+material is explicitly marked **Historical rejected baseline**.

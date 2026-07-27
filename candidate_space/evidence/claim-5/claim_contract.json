@@ -1,0 +1,23 @@
+{
+  "claim_id": 5,
+  "paper_anchor": "Proposition C.2",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2602.05549#A3.SS2.4",
+  "verdict_target": "VERIFIED",
+  "domain": {
+    "independent_categorical_joint_domains": [[2, 2, 2], [3, 2], [3, 3]],
+    "nonconstant_events_per_seed": 826,
+    "taxonomy_leaves": 8,
+    "taxonomy_predicates": 15,
+    "taxonomy_nonconstant_events_per_seed": 254,
+    "posterior_settings": 25
+  },
+  "acceptance": {
+    "independent_group_events": 20650,
+    "taxonomy_events": 6350,
+    "maximum_probability_error": 1e-14,
+    "maximum_score_error": 1e-14,
+    "overlapping_non_nested_control_rejected": true
+  },
+  "verifier": "repro/src/run_logdiff.py",
+  "fixed_command": "uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25"
+}

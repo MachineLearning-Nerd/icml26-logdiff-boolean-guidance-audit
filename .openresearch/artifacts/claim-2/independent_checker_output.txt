@@ -1,0 +1,10 @@
+{
+  "checked_claims": [
+    1,
+    2,
+    5
+  ],
+  "checker": "standard-library artifact checker",
+  "failures": [],
+  "status": "PASS"
+}

@@ -1,0 +1,14 @@
+{
+  "claim_id": 2,
+  "paper_anchor": "Table 2, recursive query columns N=2 through N=5",
+  "source_url": "https://ar5iv.labs.arxiv.org/html/2602.05549#S3.T2",
+  "verdict_target": "FALSIFIED",
+  "exact_statement_tested": "Across CMNIST and Shapes3D recursive queries with 2-5 operators, LOGDIFF is within 94-98% and constant mixing is within 63-77%",
+  "acceptance": {
+    "cells_per_method": 8,
+    "paper_values_must_be_audited_cell_by_cell": true,
+    "range_conforming_negative_control_must_not_be_falsified": true
+  },
+  "verifier": "repro/src/run_logdiff.py",
+  "fixed_command": "uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25"
+}

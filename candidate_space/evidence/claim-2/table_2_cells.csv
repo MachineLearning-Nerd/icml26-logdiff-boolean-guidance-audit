@@ -1,0 +1,17 @@
+dataset,method,operators,value_percent,claimed_low,claimed_high,inside_claimed_range
+CMNIST,LOGDIFF,2,93.8,94.0,98.0,False
+CMNIST,LOGDIFF,3,93.3,94.0,98.0,False
+CMNIST,LOGDIFF,4,94.2,94.0,98.0,True
+CMNIST,LOGDIFF,5,94.4,94.0,98.0,True
+Shapes3D,LOGDIFF,2,88.8,94.0,98.0,False
+Shapes3D,LOGDIFF,3,88.6,94.0,98.0,False
+Shapes3D,LOGDIFF,4,85.1,94.0,98.0,False
+Shapes3D,LOGDIFF,5,87.6,94.0,98.0,False
+CMNIST,constant,2,76.1,63.0,77.0,True
+CMNIST,constant,3,66.7,63.0,77.0,True
+CMNIST,constant,4,68.3,63.0,77.0,True
+CMNIST,constant,5,75.2,63.0,77.0,True
+Shapes3D,constant,2,67.2,63.0,77.0,True
+Shapes3D,constant,3,59.4,63.0,77.0,False
+Shapes3D,constant,4,58.4,63.0,77.0,False
+Shapes3D,constant,5,57.9,63.0,77.0,False

@@ -1,6 +1,7 @@
 {
   "claim_status": "BLOCKED",
   "empirical_generation_executed": false,
+  "falsification_succeeded": false,
   "fid_implementation_mismatch": true,
   "generated_samples_per_task": 5000,
   "missing_checkpoint_paths": [
@@ -37,5 +38,6 @@
       "logdiff_fid": 18.47
     }
   },
-  "tree_file_count": 73
+  "tree_file_count": 73,
+  "verification_routes_completed": 4
 }

@@ -1,0 +1,8 @@
+{
+  "control": "overlapping_non_nested_non_me_taxonomy_pair",
+  "left_leaves": "(0, 1, 2, 3)",
+  "probability_error": 0.37758290544601036,
+  "rejected": true,
+  "right_leaves": "(2, 3, 4, 5)",
+  "score_max_error": 0.11262192076160643
+}

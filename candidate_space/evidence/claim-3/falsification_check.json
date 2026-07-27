@@ -1,0 +1,28 @@
+{
+  "claim": 3,
+  "route": 4,
+  "paper_table": {
+    "not_logdiff_fid": 23.61,
+    "not_constant_fid": 32.87,
+    "and_logdiff_cs": 0.63,
+    "and_constant_cs": 0.63,
+    "or_ci_logdiff_cs": 0.97,
+    "or_ci_constant_cs": 0.93
+  },
+  "claimed_not_fid_ordering_holds_in_paper_table": true,
+  "synthetic_negative_control": {
+    "not_logdiff_fid": 35.0,
+    "not_constant_fid": 30.0,
+    "reversal_detected": true
+  },
+  "available_evidence_admissible_as_counterexample": false,
+  "inadmissibility_reasons": [
+    "no author-equivalent diffusion checkpoint",
+    "no author-equivalent composition classifier",
+    "no author-equivalent independent judge",
+    "no exact 5000-image-per-task output",
+    "no clean-fid output from an exact-method campaign"
+  ],
+  "falsification_succeeded": false,
+  "status": "BLOCKED"
+}

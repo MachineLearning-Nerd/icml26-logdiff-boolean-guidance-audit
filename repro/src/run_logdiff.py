@@ -793,6 +793,18 @@ def run(output_dir: Path, seeds: int) -> dict:
         capture_output=True,
         check=False,
     )
+    candidate_checker = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).with_name("audit_candidate_space.py")),
+            "candidate_space",
+            str(output_dir / "provenance" / "judged_space_manifest.sha256"),
+            str(output_dir),
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
     claim_3_checker_output = claim_3_checker.stdout + claim_3_checker.stderr
     (output_dir / "claim-3" / "independent_checker_output.txt").write_text(claim_3_checker_output)
     print(claim_3_checker_output, end="")
@@ -806,18 +818,24 @@ def run(output_dir: Path, seeds: int) -> dict:
     print(claim_4_checker_output, end="")
     if claim_4_checker.returncode != 0:
         failures.append("claim_4_independent_checker")
+    candidate_checker_output = candidate_checker.stdout + candidate_checker.stderr
+    print(candidate_checker_output, end="")
+    if candidate_checker.returncode != 0:
+        failures.append("candidate_evaluator_audit")
 
     summary["runtime"] = runtime_metadata(started_at)
     all_checkers_pass = (
         checker.returncode == 0
         and claim_3_checker.returncode == 0
         and claim_4_checker.returncode == 0
+        and candidate_checker.returncode == 0
     )
     summary["independent_checker"] = {
         "status": "PASS" if all_checkers_pass else "FAIL",
         "baseline_returncode": checker.returncode,
         "claim_3_returncode": claim_3_checker.returncode,
         "claim_4_returncode": claim_4_checker.returncode,
+        "candidate_returncode": candidate_checker.returncode,
     }
     summary["verifier"] = {"status": "PASS" if not failures else "FAIL", "failures": failures}
     output_dir.mkdir(parents=True, exist_ok=True)

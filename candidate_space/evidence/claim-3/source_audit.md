@@ -27,3 +27,13 @@ paper-specified clean-fid.
 
 These facts block execution of the exact author-equivalent protocol. They do
 not contradict the empirical claim and therefore cannot support FALSIFIED.
+
+## Four verification routes
+
+The complete low-confidence sequence is recorded in
+`verification_routes.json`: exact release executability, public author
+checkpoint provenance, independent public-model reconstruction, and a strict
+falsification route. The public reconstruction resolves a real 114,049,969-byte
+CelebA Diffusers UNet, but it lacks every LoGDiff-specific classifier and the
+paper's diffusion state. The fourth route finds no admissible counterexample,
+so Claim 3 remains `BLOCKED`.

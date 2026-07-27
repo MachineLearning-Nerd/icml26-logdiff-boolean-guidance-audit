@@ -28,12 +28,12 @@ Fixed command:
 uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25
 ```
 
-Run `4ce3ae70-4ee0-4eac-be6e-81a7a4342e6d` executed commit
-`c7be7e5148e9a96bc178f23b150c07f9ec8b4800` on the local backend. The
-pre-run estimate was one CPU worker and under 15 seconds. The host exposed
+Run `07daf77f-8cf7-48ed-b4f7-55b112d7a223` executed commit
+`ac7ad48b7dc4120acbbbbe0468f0cfa76c4591bc` on the local backend. The
+pre-run estimate was one CPU worker and under 25 seconds. The host exposed
 eight logical CPUs, the implementation used one algorithmic worker, the
-verifier runtime was **4.6227 seconds**, and the managed run duration was
-**10 seconds**. Python was 3.12.11, NumPy was 2.3.2, and deterministic seeds
+verifier runtime was **8.2415 seconds**, and the managed run duration was
+**15 seconds**. Python was 3.12.11, NumPy was 2.3.2, and deterministic seeds
 0–24 reran the cumulative mathematical regression suite.
 
 The author release was pinned at
@@ -52,7 +52,9 @@ The raw audit found:
   "generated_samples_per_task": 5000,
   "reported_samples_argument": 500000,
   "paper_fid_implementation": "clean-fid",
-  "release_fid_implementation": "torchmetrics.image.fid.FrechetInceptionDistance"
+  "release_fid_implementation": "torchmetrics.image.fid.FrechetInceptionDistance",
+  "verification_routes_completed": 4,
+  "falsification_succeeded": false
 }
 ```
 
@@ -71,7 +73,8 @@ The independent standard-library checker returned:
   "checker": "independent Claim 3 release-integrity checker",
   "failures": [],
   "scientific_claim_status": "BLOCKED",
-  "status": "PASS"
+  "status": "PASS",
+  "verification_routes_rederived": 4
 }
 ```
 
@@ -80,11 +83,31 @@ clean-fid, and correct sample accounting to a synthetic release manifest. The
 same audit then returns `READY_TO_RUN`, correctly rejecting a false BLOCKED
 verdict.
 
+## Four research routes
+
+| Route | Independent approach | Result |
+| ---: | --- | --- |
+| 1 | Exact author-release executability | Three checkpoints and one config missing; executable FID differs from the paper |
+| 2 | Public author-checkpoint provenance | One official branch, no tags/releases/forks, and no author or exact-filename HF artifacts |
+| 3 | Independent public-model reconstruction | A real 114,049,969-byte CelebA Diffusers UNet resolves, but it lacks the paper's diffusion, composition, and judge states |
+| 4 | Assumption-satisfying falsification search | Table values match; no exact-method clean-fid image set exists, so no valid counterexample |
+
+Download the complete
+[route record](../../evidence/claim-3/verification_routes.json),
+[public search summary](../../evidence/claim-3/public_checkpoint_search_summary.json),
+[raw author-model search](../../evidence/claim-3/public-checkpoint-search/hf-models-TanjaBien.json),
+[raw official-branch response](../../evidence/claim-3/public-checkpoint-search/github-branches.json),
+[raw public-model response](../../evidence/claim-3/public-checkpoint-search/hf-public-celeba-model.json),
+and
+[strict falsification check](../../evidence/claim-3/falsification_check.json).
+The public-model resolution is a positive discovery control, not proxy claim
+evidence.
+
 Download the [raw release audit](../../evidence/claim-3/release_audit.json),
 [negative-control output](../../evidence/claim-3/negative_control.json),
 [independent-checker output](../../evidence/claim-3/independent_checker_output.txt),
 [complete author tree snapshot](../../evidence/claim-3/author_release_snapshot.json),
-and [full cumulative summary](../../evidence/run-4ce3ae70-summary.json).
+and [full cumulative summary](../../evidence/run-07daf77f-summary.json).
 Executable sources are
 [the cumulative verifier](../../code/run_logdiff.py) and
 [the independent Claim 3 checker](../../code/check_claim3_release.py).

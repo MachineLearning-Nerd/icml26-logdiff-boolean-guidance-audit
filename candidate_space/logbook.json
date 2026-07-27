@@ -11,16 +11,28 @@
     "icml2026-repro",
     "paper-OAM1jJsMGp"
   ],
-  "updated_at": "2026-07-27T12:20:00+00:00",
+  "updated_at": "2026-07-27T14:30:00+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Logical Guidance for the Exact Composition of Diffusion Models",
     "file": "pages/index.md",
     "children": [
       {
+        "slug": "current-cumulative-verification",
+        "title": "Current cumulative verification - Claims 1-5",
+        "file": "pages/current-cumulative-verification/page.md",
+        "children": []
+      },
+      {
         "slug": "current-claim-3-celeba-verification",
         "title": "Current verification - Claim 3 CelebA",
         "file": "pages/current-claim-3-celeba-verification/page.md",
+        "children": []
+      },
+      {
+        "slug": "current-claim-4-molecular-verification",
+        "title": "Current verification - Claim 4 molecular",
+        "file": "pages/current-claim-4-molecular-verification/page.md",
         "children": []
       },
       {
@@ -55,7 +67,7 @@
       },
       {
         "slug": "claim-4-recovered-molecular-pipeline",
-        "title": "Claim 4 - recovered molecular pipeline",
+        "title": "Historical rejected baseline - Claim 4 recovered molecular pipeline",
         "file": "pages/claim-4-recovered-molecular-pipeline/page.md",
         "children": []
       },
