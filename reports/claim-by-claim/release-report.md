@@ -65,7 +65,11 @@ The winning scientific branch before presentation work is
 `orx/csv-aware-evaluator-release-audit` at Git
 `1d37e8b…`. Its managed local run completed in 15 seconds, used one
 algorithmic CPU worker, and incurred no paid compute cost. The final
-publication branch will be named and hashed after its cumulative release run.
+publication surface is
+`orx/publication-surface-and-illustrated-report@13569ed474f2872b5827e57f4c7fbf791be4119c`.
+Its cumulative run completed in 10 seconds managed wall time (4.1231 seconds
+inside the verifier), exposed 8 logical host CPUs, and used one algorithmic
+worker. No GPU, Hugging Face job, or paid compute was used.
 
 ## Release gates and publication action
 
@@ -75,13 +79,20 @@ text-only allowlist generation, secret scanning, and evaluator-blind traversal
 from the canonical README. The judged Space revision
 `1fd04429cb112e90be5fa2bb7a19b827667922bf` remains immutable evidence.
 
-After the final gate run passes, the exact publication action is: upload only
+The latest audited candidate contains 353 files; all 23 judged paths are
+present, and the historical pages are byte-identical. The evaluator-blind
+review opened 78 reachable files, left no conclusion unverified, checked 288
+JSON files, found no broken links or secret hits, and produced an exact
+333-path text-only upload allowlist plus a SHA-256 manifest.
+
+After the metadata-only final gate run passes, the exact publication action is: upload only
 the SHA-256-manifested text allowlist to the existing Hugging Face Space
 `DineshAI/OAM1jJsMGp` through the Hugging Face commit API, verify the returned
 revision, download that exact revision and repeat the traversal/hash audit,
 then fast-forward GitHub `main` to the tested publication commit and confirm
 the remote SHA. No second Space will be created.
 
-The exact upload allowlist, candidate manifest, full runtime record, final Git
-SHA, published Hugging Face revision, and post-publication hash verification
-are generated or filled only by the final audited run and publication step.
+The exact pre-publication commands are preserved in the
+[campaign command ledger](command-ledger.md). The published Hugging Face
+revision and post-publication hash verification are recorded only after the
+API returns the immutable revision.

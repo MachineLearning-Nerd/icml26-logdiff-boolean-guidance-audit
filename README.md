@@ -61,10 +61,12 @@ uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openres
 | [`orx/celeba-evaluator-visible-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/celeba-evaluator-visible-evidence) | Complete four-route Claim 3 audit and canonical evidence | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Claim 3 BLOCKED; missing equivalent checkpoints and exact metric path | Local CPU, one worker, 15 s managed |
 | [`orx/molecular-evaluator-visible-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/molecular-evaluator-visible-evidence) | Complete four-route Claim 4 audit and canonical evidence | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Claim 4 BLOCKED; no complete paired campaign or docking evidence | Local CPU, one worker, 10 s managed |
 | [`orx/csv-aware-evaluator-release-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/csv-aware-evaluator-release-audit) | Cumulative science plus evaluator-blind link, manifest, history, and secret audit | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | All five verdict contracts and release checks pass | Local CPU, one worker, 15 s managed |
-| [`orx/publication-surface-and-illustrated-report`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/publication-surface-and-illustrated-report) | Illustrated report, tutorial notebook, and final public surface | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Pending final cumulative release run | Local CPU, one worker expected |
+| [`orx/publication-surface-and-illustrated-report`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/publication-surface-and-illustrated-report) | Illustrated report, tutorial notebook, and public surface | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | All cumulative science and evaluator-visible release checks PASS at `13569ed` | Local CPU, one worker, 10 s managed |
 
 Raw experiment and run IDs remain in the OpenResearch experiment descriptions
 and evidence records rather than the public landing page.
+The [campaign command ledger](reports/claim-by-claim/command-ledger.md)
+records the exact research, orchestration, and release-gate commands.
 
 ## Reproduce
 
