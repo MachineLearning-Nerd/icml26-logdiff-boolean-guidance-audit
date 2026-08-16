@@ -17,7 +17,7 @@ def _(mo):
     # Logical Guidance for Exact Diffusion Composition
 
     <img
-      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/main/reports/claim-by-claim/images/headline-verdicts.png"
+      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/main/reports/claim-by-claim/images/headline-verdicts.png"
       alt="Five exact claims: Claims 1 and 5 verified, Claim 2 falsified, Claims 3 and 4 blocked; supported score 6/10"
       style="width: 100%; border-radius: 12px;"
     />
@@ -120,7 +120,7 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     <img
-      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/main/reports/claim-by-claim/images/theorem-certificates.png"
+      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/main/reports/claim-by-claim/images/theorem-certificates.png"
       alt="Finite-domain certificates for Claims 1 and 5"
       style="width: 100%; border-radius: 12px;"
     />
@@ -170,7 +170,7 @@ def _(mo, table2):
             mo.md(
                 r"""
                 <img
-                  src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/main/reports/claim-by-claim/images/table2-range-audit.png"
+                  src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/main/reports/claim-by-claim/images/table2-range-audit.png"
                   alt="Cell-by-cell range audit for Table 2"
                   style="width: 100%; border-radius: 12px;"
                 />
@@ -228,7 +228,7 @@ def _(mo):
     96 partial molecular payloads were rejected as non-equivalent evidence.
 
     <img
-      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/main/reports/claim-by-claim/images/blocked-claims.png"
+      src="https://raw.githubusercontent.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/main/reports/claim-by-claim/images/blocked-claims.png"
       alt="Four verification routes and remaining blockers for Claims 3 and 4"
       style="width: 100%; border-radius: 12px;"
     />
@@ -254,9 +254,9 @@ def _(mo):
     ```
 
     Read the
-    [illustrated report](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/blob/main/reports/claim-by-claim/report.md)
+    [illustrated report](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/blob/main/reports/claim-by-claim/report.md)
     or start from the
-    [canonical evaluator page](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/blob/main/candidate_space/pages/current-cumulative-verification/page.md)
+    [canonical evaluator page](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/blob/main/candidate_space/pages/current-cumulative-verification/page.md)
     for contracts, raw CSV/JSON evidence, independent checker outputs,
     negative controls, and limitations.
     """)

@@ -62,11 +62,11 @@ uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openres
 ```
 
 The winning scientific branch before presentation work is
-`orx/csv-aware-evaluator-release-audit` at Git
-`1d37e8b…`. Its managed local run completed in 15 seconds, used one
-algorithmic CPU worker, and incurred no paid compute cost. The final
-publication surface is
-`orx/publication-surface-and-illustrated-report@13569ed474f2872b5827e57f4c7fbf791be4119c`.
+audit/csv-release at rewritten Git tip 021498d…. Its managed local run
+completed in 15 seconds, used one algorithmic CPU worker, and incurred no paid
+compute cost. The final publication surface is
+release/publication-surface at rewritten Git tip
+1734c4f54a96e397cefe9df07cf0d394479024ac.
 Its cumulative run completed in 10 seconds managed wall time (4.1231 seconds
 inside the verifier), exposed 8 logical host CPUs, and used one algorithmic
 worker. No GPU, Hugging Face job, or paid compute was used.

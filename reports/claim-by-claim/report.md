@@ -151,8 +151,8 @@ the exact clean-fid evaluation path. Resolving Claim 4 requires complete
 LoGDiff and DualDiff 32-ligand campaigns plus their GRM5/RRM1 docking outputs.
 
 Important lineage is available on the
-[frozen baseline](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/frozen-cumulative-baseline),
-[CelebA audit](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/celeba-evaluator-visible-evidence),
-[molecular audit](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/molecular-evaluator-visible-evidence), and
-[release candidate](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/csv-aware-evaluator-release-audit)
+[frozen baseline](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/tree/baseline/frozen-claims),
+[CelebA audit](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/tree/audit/celeba-evidence),
+[molecular audit](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/tree/audit/molecular-evidence), and
+[release candidate](https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit/tree/audit/csv-release)
 branches.
