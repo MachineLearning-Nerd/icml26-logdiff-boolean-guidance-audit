@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "snapshot": {
+    "recorded_utc": "2026-07-27",
+    "run_commit": "ac7ad48b7dc4120acbbbbe0468f0cfa76c4591bc",
+    "paper_source_sha256": "67336441b284337c309cd66e2aee8d3a6bd01da716c145debe1319387b9c321a",
+    "official_source_commit": "94ef35bafd4b4239e9832d8295128c09e8fc1472"
+  },
+  "files": {
+    ".openresearch/artifacts/run-07daf77f-summary.json": "caa8792c59bbdb7aa365ed59ff3b9ab5b967d36a0e57824b9f1b8efdf393a5d1",
+    ".openresearch/artifacts/claim-1/exhaustive_formulas.csv": "c71e9ed1453e56dd052e62e9fca3c6343f81c975717526f6e170b7144cfdd66d",
+    ".openresearch/artifacts/claim-2/table_2_cells.csv": "e2b2af1153ed3a7f3fae0dc259a279b7a1becea208445621ef8dead6a9be293d",
+    ".openresearch/artifacts/claim-3/release_audit.json": "c5662d132a54d0249dd804069a401be633029c53e35282048e34f49cb64b8091",
+    ".openresearch/artifacts/claim-4/bucket_audit.json": "20d620d00b0c55171dd0ba35b13c290966d0c084943860f1021dc69c7f829085",
+    ".openresearch/artifacts/claim-5/independent_groups.csv": "5422e2bddf334add1e37dc7b64eb23510545bad96efa577d07cb87ef75b7cd03",
+    ".openresearch/artifacts/claim-5/taxonomy.csv": "f3c1fde5581296b72ff7a4d289d21e749a801618752a2ff7a6889a5423d12f5f",
+    ".openresearch/artifacts/provenance/paper_source.json": "98cc5d302582620571b7db539d3e6e58305f72be8ad17af0c265dfc9b5722c21",
+    ".openresearch/artifacts/provenance/live_verdict.json": "c97332d4c7b7794056a9417415ea7505b8aeadd3dbc4ecdc35aeda95724e2d71",
+    ".openresearch/artifacts/provenance/judged_space_manifest.sha256": "6ae4f78858f549b10c9e35fab00b1e6019b96345776212010da4624141995bc6"
+  }
+}

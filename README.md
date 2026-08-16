@@ -1,96 +1,110 @@
-# LOGDIFF exact Boolean guidance — claim-by-claim reproduction
+# ICML 2026 — LOGDIFF reproduction audit
 
-This repository reproduces five claims from
+This repository is an independent, claim-by-claim audit of
 [*Logical Guidance for the Exact Composition of Diffusion Models*](https://arxiv.org/abs/2602.05549)
-(ICML 2026 submission `OAM1jJsMGp`). The strongest current evidence supports
-the existing live-judge score of **6/10**: Claims 1 and 5 are `VERIFIED`,
-Claim 2 is `FALSIFIED` as literally written, and Claims 3 and 4 are `BLOCKED`.
-No score increase is claimed before a live judge evaluates the published
-revision.
+(OpenReview OAM1jJsMGp). It preserves the executable finite certificates,
+release-integrity checks, historical molecular manifests, and evaluator-visible
+reports used to reach each result.
 
-![Five exact claims, three resolved](reports/claim-by-claim/images/headline-verdicts.png)
+The intended final repository name is
+icml26-logdiff-boolean-guidance-audit; the old name was
+icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance.
 
-## Reproduction result
+## Paper
 
-| Claim | Paper number or statement | Observed evidence | Assessment |
-| --- | --- | --- | --- |
-| 1 — Proposition 3.1 | Exact logical-score composition under CI/ME assumptions | 6,350 formulas; max probability error `2.22e-16`, max score error `3.33e-16`; all controls reject invalid constructions | VERIFIED |
-| 2 — Table 2 ranges | LoGDiff 94–98%; constant mixing 63–77% | LoGDiff 85.1–94.4% (2/8 cells in range); constant 57.9–76.1% (5/8) | FALSIFIED as written |
-| 3 — CelebA NOT | FID 23.61 versus 32.87 | Four verification routes; three required author-equivalent checkpoints and exact clean-fid path unavailable | BLOCKED |
-| 4 — GRM5/RRM1 | AND 73.20 versus 71.87; separation 0.94 versus 0.28 | Four routes; 96 partial LoGDiff payloads, but zero complete paired campaigns or docking outputs | BLOCKED |
-| 5 — Proposition C.2 | Completeness for independent categorical groups and nested taxonomies | 27,000 finite events exhausted; max error `3.33e-16`; invalid overlap rejected | VERIFIED |
+- **Title:** Logical Guidance for the Exact Composition of Diffusion Models
+- **Authors:** Francesco Alesiani, Jonathan Warrell, Tanja Bien, Henrik
+  Christiansen, Matheus Ferraz, and Mathias Niepert
+- **Paper:** [arXiv:2602.05549](https://arxiv.org/abs/2602.05549)
+- **Submission:** [OpenReview OAM1jJsMGp](https://openreview.net/forum?id=OAM1jJsMGp)
+- **Official implementation:** [TanjaBien/LogDiff](https://github.com/TanjaBien/LogDiff),
+  audited at commit 94ef35bafd4b4239e9832d8295128c09e8fc1472
 
-Read the [illustrated technical report](reports/claim-by-claim/report.md), the
-[release and confidence report](reports/claim-by-claim/release-report.md), or
-the [canonical evaluator-visible verification](candidate_space/pages/current-cumulative-verification/page.md).
-The [tutorial-style marimo notebook](notebooks/logdiff_reproduction.py) embeds
-the accepted evidence and does not require an expensive rerun.
+The paper proposes LOGDIFF, an exact Boolean calculus for composing diffusion
+guidance signals under conditional-independence and mutual-exclusion
+conditions, together with a hybrid guidance method for image and protein
+generation.
 
-[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/blob/main/notebooks/logdiff_reproduction.py)
+## Current claim ledger
 
-## Scope and substitutions
+| Claim | What is tested | Evidence outcome |
+| --- | --- | --- |
+| C1 — Proposition 3.1 | Exact recursive probability and score composition under the paper's CI/ME assumptions | VERIFIED_SCOPED: 6,350 finite formulas, maximum probability error 2.22e-16, maximum score error 3.33e-16; 3/3 violation controls rejected |
+| C2 — Table 2 ranges | The literal ranges “LOGDIFF 94–98%” and “constant 63–77%” over all 16 cells | FALSIFIED_EXACT_STATEMENT: LOGDIFF has 2/8 cells in range and constant mixing has 5/8; this does not falsify the broader qualitative comparison |
+| C3 — CelebA negation | Reported NOT FID 23.61 versus 32.87 with the paper's 5,000-sample clean-fid protocol | BLOCKED: the pinned author release lacks the required checkpoints/config and uses a different FID path; no proxy was substituted |
+| C4 — GRM5/RRM1 molecules | Eight 32-ligand experiments per method and condition, including LOGDIFF versus DualDiff | BLOCKED: 96 partial LOGDIFF payloads are preserved, but no complete experiment, DualDiff campaign, or docking result exists |
+| C5 — Proposition C.2 | Completeness for independent categorical groups and nested taxonomies | VERIFIED_SCOPED: 20,650 independent-group events and 6,350 taxonomy events; invalid-overlap control rejected |
 
-The mathematical checks are exhaustive over the complete finite categorical
-domains in their claim contracts. They are not described as proofs for
-arbitrary continuous diffusion models. Claim 2 is a direct audit of every
-paper Table 2 cell, not a new image-generation run.
+These are evidence labels, not claims that every continuous theorem or every
+full-scale empirical result has been reproduced. The recorded external judge
+result is a historical 6/10 at the immutable judged Space revision
+1fd04429cb112e90be5fa2bb7a19b827667922bf; no score increase is claimed here.
 
-No proxy was substituted for the full CelebA or molecular experiments. The
-public CelebA DDPM lacks the required model state, classifiers, and judge. The
-recovered molecular bucket contains 96 of 448 declared LoGDiff sample payloads
-but no complete experiment, no DualDiff campaign, and no docking output.
-Those claims remain `BLOCKED` rather than being scored from downscaled data.
+The detailed production paths are in
+[CLAIM_EVIDENCE.md](CLAIM_EVIDENCE.md), and the machine-readable version is
+[claims.json](claims.json).
 
-All accepted verification runs used the authorized local CPU backend, one
-algorithmic worker, and less than 25 seconds each. The host exposed eight
-logical CPUs, but the implementation remained single-worker. No GPU or paid
-Hugging Face compute was used.
+## How each claim is produced
 
-## Experiment log
+- **C1:** repro/src/exhaustive_binary, primitive_checks, and
+  dependent_controls enumerate finite categorical events, compare recursive
+  rules with an independent full-joint oracle, and run negative controls.
+- **C2:** repro/src/audit_table_2 expands the paper's Table 2 into all 16
+  cells and checks interval membership without rounding or aggregation.
+- **C3:** repro/src/audit_claim_3_release and
+  repro/src/check_claim3_release.py inspect the pinned official release,
+  checkpoint paths, dataset configuration, sample accounting, and FID
+  implementation. A synthetic complete-release control prevents a false
+  BLOCKED verdict.
+- **C4:** repro/src/audit_claim_4_evidence and
+  repro/src/check_claim4_evidence.py validate the preserved bucket listing,
+  terminal slice manifests, sample hashes, method/condition counts, and
+  completeness contract. A synthetic complete two-method control prevents a
+  false BLOCKED verdict.
+- **C5:** repro/src/exhaustive_categorical_groups,
+  exhaustive_taxonomy, and taxonomy_overlap_control enumerate both finite
+  constructive cases and deliberately reject an invalid non-nested overlap.
 
-The exact fixed command for every launched experiment is:
+The public evaluator-visible surface remains under
+[candidate_space](candidate_space/README.md). The illustrated technical and
+release reports are under [reports/claim-by-claim](reports/claim-by-claim/).
 
-```text
-uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25
-```
+## Branches
 
-| Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
-| --- | --- | --- | --- | --- |
-| `main` | Public landing page and tested-artifact mirror | Not run as an experiment (publication surface) | Presentation-only; populated by fast-forwarding the tested publication branch | Not applicable |
-| [`orx/frozen-cumulative-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/frozen-cumulative-baseline) | Freeze and rerun previously accepted Claims 1, 2, and 5 | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Claims 1/5 VERIFIED; Claim 2 FALSIFIED; cumulative controls pass | Local CPU, one worker, 10 s managed |
-| [`orx/celeba-evaluator-visible-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/celeba-evaluator-visible-evidence) | Complete four-route Claim 3 audit and canonical evidence | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Claim 3 BLOCKED; missing equivalent checkpoints and exact metric path | Local CPU, one worker, 15 s managed |
-| [`orx/molecular-evaluator-visible-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/molecular-evaluator-visible-evidence) | Complete four-route Claim 4 audit and canonical evidence | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | Claim 4 BLOCKED; no complete paired campaign or docking evidence | Local CPU, one worker, 10 s managed |
-| [`orx/csv-aware-evaluator-release-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/csv-aware-evaluator-release-audit) | Cumulative science plus evaluator-blind link, manifest, history, and secret audit | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | All five verdict contracts and release checks pass | Local CPU, one worker, 15 s managed |
-| [`orx/publication-surface-and-illustrated-report`](https://github.com/MachineLearning-Nerd/icml26-repro-OAM1jJsMGp-logdiff-exact-boolean-guidance/tree/orx/publication-surface-and-illustrated-report) | Illustrated report, tutorial notebook, and public surface | `uv sync --frozen && uv run python repro/src/run_logdiff.py --output-dir .openresearch/artifacts --seeds 25` | All cumulative science and evaluator-visible release checks PASS at `13569ed` | Local CPU, one worker, 10 s managed |
+main is the landing page and final publication surface. The former orx/*
+branches are historical experiment checkpoints; they are being mapped to
+descriptive baseline/, audit/, candidate/, and release/ names. See the
+complete old-to-new mapping and purpose of every branch in
+[BRANCH_AUDIT.md](BRANCH_AUDIT.md).
 
-Raw experiment and run IDs remain in the OpenResearch experiment descriptions
-and evidence records rather than the public landing page.
-The [campaign command ledger](reports/claim-by-claim/command-ledger.md)
-records the exact research, orchestration, and release-gate commands.
+## Reproduce the published snapshot
 
-## Reproduce
+The locked verifier command is:
 
-Install the single repository-level environment and run the locked cumulative
-verifier:
-
-```bash
+~~~bash
 uv sync --frozen
 uv run python repro/src/run_logdiff.py \
   --output-dir .openresearch/artifacts --seeds 25
-```
+~~~
 
-The command regenerates claim-level CSV/JSON, independent-checker output,
-negative controls, and release-audit records. Each checker exits nonzero on a
-failed contract. For a guided reading without regenerating evidence:
+The tracked .openresearch/artifacts/ directory supplies the hash-bound release
+evidence required by the C3 and C4 fail-closed checks. To preserve the
+published snapshot, copy that directory to a temporary output directory before
+running a new audit. The command does not claim to regenerate the missing
+CelebA or molecular evidence; it verifies their documented blockers.
 
-```bash
-uvx --from marimo==0.23.15 marimo edit notebooks/logdiff_reproduction.py
-# or
-uvx --from marimo==0.23.15 marimo run notebooks/logdiff_reproduction.py
-```
+For a lightweight repository-state check after cloning:
 
-The official paper implementation was audited at
-`TanjaBien/LogDiff@94ef35bafd4b4239e9832d8295128c09e8fc1472`.
-The exact judged Hugging Face Space revision
-`DineshAI/OAM1jJsMGp@1fd04429cb112e90be5fa2bb7a19b827667922bf`
-is preserved as immutable historical evidence within the additive candidate.
+~~~bash
+python3 verify_final.py
+~~~
+
+The recorded environment, runtime, source pins, and limitations are in
+[ENVIRONMENT.md](ENVIRONMENT.md) and [SOURCE_AUDIT.md](SOURCE_AUDIT.md).
+
+## Citation and thanks
+
+Please cite the paper with [CITATION.cff](CITATION.cff). A direct thank-you
+note to the authors is preserved in
+[AUTHOR_THANK_YOU.md](AUTHOR_THANK_YOU.md). This audit is not an official
+paper implementation and does not imply author endorsement.

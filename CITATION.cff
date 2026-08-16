@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If this audit or its evidence contracts are useful, please cite the paper in preferred-citation."
+title: "ICML 2026 LOGDIFF reproduction audit"
+type: software
+version: "1.0.0"
+date-released: 2026-08-16
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-logdiff-boolean-guidance-audit"
+url: "https://arxiv.org/abs/2602.05549"
+authors:
+  - name: MachineLearning-Nerd
+preferred-citation:
+  type: article
+  title: "Logical Guidance for the Exact Composition of Diffusion Models"
+  authors:
+    - given-names: Francesco
+      family-names: Alesiani
+    - given-names: Jonathan
+      family-names: Warrell
+    - given-names: Tanja
+      family-names: Bien
+    - given-names: Henrik
+      family-names: Christiansen
+    - given-names: Matheus
+      family-names: Ferraz
+    - given-names: Mathias
+      family-names: Niepert
+  journal: "International Conference on Machine Learning"
+  year: 2026
+  url: "https://arxiv.org/abs/2602.05549"

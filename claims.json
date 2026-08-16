@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Logical Guidance for the Exact Composition of Diffusion Models",
+    "arxiv": "2602.05549",
+    "openreview": "OAM1jJsMGp",
+    "authors": [
+      "Francesco Alesiani",
+      "Jonathan Warrell",
+      "Tanja Bien",
+      "Henrik Christiansen",
+      "Matheus Ferraz",
+      "Mathias Niepert"
+    ]
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "paper_anchor": "Proposition 3.1",
+      "status": "VERIFIED_SCOPED",
+      "producer": [
+        "repro/src/run_logdiff.py:exhaustive_binary",
+        "repro/src/run_logdiff.py:primitive_checks",
+        "repro/src/run_logdiff.py:dependent_controls"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim-1/exhaustive_formulas.csv",
+        ".openresearch/artifacts/claim-1/primitive_rules.csv",
+        ".openresearch/artifacts/claim-1/negative_controls.csv"
+      ],
+      "boundary": "Exhaustive over the declared finite smooth categorical certificate, not arbitrary continuous diffusion models.",
+      "measurements": {
+        "compiled_formulas": 6350,
+        "max_probability_error": 2.220446049250313e-16,
+        "max_score_error": 3.3306690738754696e-16,
+        "negative_controls_rejected": 3
+      }
+    },
+    {
+      "id": "C2",
+      "paper_anchor": "Table 2, N=2 through N=5",
+      "status": "FALSIFIED_EXACT_STATEMENT",
+      "producer": [
+        "repro/src/run_logdiff.py:audit_table_2",
+        "repro/src/run_logdiff.py:table_2_negative_control"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim-2/table_2_cells.csv",
+        ".openresearch/artifacts/claim-2/negative_control.json"
+      ],
+      "boundary": "Only the literal aggregate interval statement is falsified; the broader qualitative comparison is not assessed by this result.",
+      "measurements": {
+        "logdiff_cells_in_range": 2,
+        "logdiff_total_cells": 8,
+        "constant_cells_in_range": 5,
+        "constant_total_cells": 8
+      }
+    },
+    {
+      "id": "C3",
+      "paper_anchor": "Section 4.1, Table 3, Appendix A.5",
+      "status": "BLOCKED",
+      "producer": [
+        "repro/src/run_logdiff.py:audit_claim_3_release",
+        "repro/src/check_claim3_release.py"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim-3/release_audit.json",
+        ".openresearch/artifacts/claim-3/author_release_snapshot.json",
+        ".openresearch/artifacts/claim-3/verification_routes.json",
+        ".openresearch/artifacts/claim-3/negative_control.json"
+      ],
+      "boundary": "No author-equivalent checkpoint or exact clean-fid generation run is present; release failure is not empirical falsification."
+    },
+    {
+      "id": "C4",
+      "paper_anchor": "Section 4.2, Tables 5-6, Appendix A.6",
+      "status": "BLOCKED",
+      "producer": [
+        "repro/src/run_logdiff.py:audit_claim_4_evidence",
+        "repro/src/check_claim4_evidence.py"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim-4/bucket_audit.json",
+        ".openresearch/artifacts/claim-4/historical_bucket_listing.json",
+        ".openresearch/artifacts/claim-4/verification_routes.json",
+        ".openresearch/artifacts/claim-4/negative_control.json"
+      ],
+      "boundary": "Partial LOGDIFF payloads do not satisfy the complete paired LOGDIFF/DualDiff protocol and are not a counterexample.",
+      "measurements": {
+        "terminal_slices": 12,
+        "expected_slices": 56,
+        "manifest_bound_samples": 96,
+        "expected_samples": 448,
+        "complete_logdiff_experiments": 0,
+        "complete_dualdiff_experiments": 0,
+        "docking_result_files": 0
+      }
+    },
+    {
+      "id": "C5",
+      "paper_anchor": "Proposition C.2",
+      "status": "VERIFIED_SCOPED",
+      "producer": [
+        "repro/src/run_logdiff.py:exhaustive_categorical_groups",
+        "repro/src/run_logdiff.py:exhaustive_taxonomy",
+        "repro/src/run_logdiff.py:taxonomy_overlap_control"
+      ],
+      "evidence": [
+        ".openresearch/artifacts/claim-5/independent_groups.csv",
+        ".openresearch/artifacts/claim-5/taxonomy.csv",
+        ".openresearch/artifacts/claim-5/negative_control.json"
+      ],
+      "boundary": "Exhaustive over the finite independent-product and eight-leaf taxonomy domains in the contract.",
+      "measurements": {
+        "independent_group_events": 20650,
+        "taxonomy_events": 6350,
+        "max_probability_error": 2.220446049250313e-16,
+        "max_score_error": 3.3306690738754696e-16,
+        "overlap_control_rejected": true
+      }
+    }
+  ]
+}
